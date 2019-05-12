@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Enemy Wave Config")]
 
-public class NewBehaviourScript : ScriptableObject
+public class WaveConfig : ScriptableObject
 {
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject pathPrefab;
@@ -14,7 +14,15 @@ public class NewBehaviourScript : ScriptableObject
     [SerializeField] int numberOfEnemies = 5;
 
     public GameObject GetEnemyPrefab() { return enemyPrefab; }
-    public GameObject GetPathPrefab() { return pathPrefab; }
+    public List<Transform> GetWaypoints()
+    {
+        var waypoints = new List<Transform>();
+        foreach (Transform waypoint in pathPrefab.transform)
+        {
+            waypoints.Add(waypoint);
+        }
+        return waypoints;
+    }
     public float GetTimeBetweenSpawns() { return timeBetweenSpawns; }
     public float GetSpawnRandomFactor() { return spawnRandomFactor; }
     public float GetMoveSpeed() { return moveSpeed; }

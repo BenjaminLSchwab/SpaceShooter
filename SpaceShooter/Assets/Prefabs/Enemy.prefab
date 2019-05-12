@@ -44,29 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe856359915523246aa375ba026aacd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waveConfig: {fileID: 11400000, guid: c24fcf034d5a33d41bda877eab0b0014, type: 2}
+  moveSpeed: 2
 --- !u!1 &6048086869287573467
 GameObject:
   m_ObjectHideFlags: 0

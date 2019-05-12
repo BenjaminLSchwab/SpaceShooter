@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 610f9596d20f55244b067dd27070a8d2, type: 3}
   m_Name: Wave 1
-  m_EditorClassIdentifier: Assembly-CSharp::NewBehaviourScript
+  m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6048086868781094698, guid: fcccf2f23decd9e42a075e51065d775b,
     type: 3}
   pathPrefab: {fileID: 502114717653417676, guid: d2aeebcc23a5e2b4b809fe477e0b4d60,

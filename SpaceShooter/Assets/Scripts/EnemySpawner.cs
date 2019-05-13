@@ -19,11 +19,13 @@ private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)
     {
         for (int i = 0; i < waveConfig.GetNumberOfEnemies(); i++)
         {
-        Instantiate(
+            var newEnemy = Instantiate(
             waveConfig.GetEnemyPrefab(),
             waveConfig.GetWaypoints()[0].position,
             Quaternion.identity
             );
+
+            newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
         yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
         }
     }

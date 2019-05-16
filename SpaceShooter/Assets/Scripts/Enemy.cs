@@ -24,5 +24,9 @@ public class Enemy : MonoBehaviour
         {
             health -= damageDealer.GetDamage();
         }
+        if (health < 1)
+        {
+            Destroy(gameObject);
+        }
     }
 }

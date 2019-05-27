@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float laserSpawnDistance = .1f;
     [SerializeField] float laserSpeed = 10f;
     [SerializeField] GameObject laserPrefab;
+    [SerializeField] GameObject explosion;
     List<GameObject> laserPool = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,11 @@ public class Enemy : MonoBehaviour
         }
         if (health < 1)
         {
+            if (explosion)
+            {
+                var explosionfx = Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(explosionfx, 1f);
+            }
             Destroy(gameObject);
         }
     }

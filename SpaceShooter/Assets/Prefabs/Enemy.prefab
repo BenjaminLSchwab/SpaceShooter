@@ -68,6 +68,8 @@ MonoBehaviour:
     type: 3}
   explosion: {fileID: 5828303087710901251, guid: 0ded01c1112369c4bbc4835a57e31fdd,
     type: 3}
+  laserSound: {fileID: 8300000, guid: 7aa0fd4a79ec980409321653535e95bc, type: 3}
+  deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
 --- !u!58 &6869346941915588183
 CircleCollider2D:
   m_ObjectHideFlags: 0

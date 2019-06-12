@@ -52,6 +52,10 @@ MonoBehaviour:
   m_laserSpawnDistance: 0.7
   m_laserSpawnPeriod: 0.5
   m_laser: {fileID: 1399114658019198, guid: 1dd3f256e13443844b9beae3757423a4, type: 3}
+  laserSound: {fileID: 8300000, guid: 804a09d27fc0ac242b381ceab8af9989, type: 3}
+  laserSoundVolume: 0.4
+  deathSound: {fileID: 8300000, guid: 2d7e1b0e07c8a364bbf43a32b4587008, type: 3}
+  deathSoundVolume: 1.5
 --- !u!60 &2284575130035180793
 PolygonCollider2D:
   m_ObjectHideFlags: 0

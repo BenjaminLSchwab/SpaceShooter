@@ -16,6 +16,12 @@ public class Player : MonoBehaviour {
     [SerializeField] float m_laserSpawnPeriod = .5f;
     [SerializeField] GameObject m_laser;
 
+    [Header("Sound")]
+    [SerializeField] AudioClip laserSound;
+    [SerializeField] [Range(0, 1)] float laserSoundVolume = 0.2f;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] [Range(0, 1)] float deathSoundVolume = 1f;
+
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
     float xMin;
@@ -63,6 +69,7 @@ public class Player : MonoBehaviour {
 
         while (true)
         {
+            if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
             var laserSpawnPos = transform.position + new Vector3(0, m_laserSpawnDistance, -1);
 
             GameObject newLaser = FindFirstInactiveLaser(); //returns null if the pool has no lasers ready
@@ -116,7 +123,13 @@ public class Player : MonoBehaviour {
         }
         if (health < 1)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
+        Destroy(gameObject);
     }
 }

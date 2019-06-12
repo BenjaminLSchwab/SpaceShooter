@@ -5,15 +5,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy")]
     [SerializeField] float health = 100;
-    [SerializeField] float shotCounter;
+    [SerializeField] GameObject explosion;
+
+    [Header("Lasers")]
+    [SerializeField] GameObject laserPrefab;
     [SerializeField] float minTimebetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] float laserSpawnDistance = .1f;
     [SerializeField] float laserSpeed = 10f;
-    [SerializeField] GameObject laserPrefab;
-    [SerializeField] GameObject explosion;
+
+    [Header("Sounds")]
+    [SerializeField] AudioClip laserSound;
+    [SerializeField] [Range(0, 1)] float laserSoundVolume = 0.5f;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] [Range(0,1)] float deathSoundVolume = 1f;
+
     List<GameObject> laserPool = new List<GameObject>();
+    float shotCounter;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +49,7 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
+        if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
         var laserSpawnPos = transform.position + new Vector3(0, -laserSpawnDistance, -1);
         var laser = FindFirstInactiveLaser();
         if (laser == null)
@@ -64,21 +76,27 @@ public class Enemy : MonoBehaviour
         }
         if (health < 1)
         {
-            if (explosion)
-            {
-                var explosionfx = Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(explosionfx, 1f);
-            }
-            DestroyLasers();
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
+        if (explosion)
+        {
+            var explosionfx = Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(explosionfx, 1f);
+        }
+        DestroyLasers();
+        Destroy(gameObject);
     }
 
     public void DestroyLasers()
     {
         foreach (var laser in laserPool)
         {
-            Destroy(laser);
+            Destroy(laser, 3f);
         }
     }
 

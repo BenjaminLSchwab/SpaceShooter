@@ -69,7 +69,16 @@ public class Enemy : MonoBehaviour
                 var explosionfx = Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(explosionfx, 1f);
             }
+            DestroyLasers();
             Destroy(gameObject);
+        }
+    }
+
+    public void DestroyLasers()
+    {
+        foreach (var laser in laserPool)
+        {
+            Destroy(laser);
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour
 {
     WaveConfig waveConfig;
+    Enemy Enemy;
     List<Transform> waypoints = new List<Transform>();
     int waypointIndex = 0;
 
@@ -18,6 +19,7 @@ public class EnemyPathing : MonoBehaviour
         }
         waypoints = waveConfig.GetWaypoints();
         transform.position = waypoints[0].position;
+        Enemy = GetComponent<Enemy>();
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class EnemyPathing : MonoBehaviour
         }
         else
         {
+         if(Enemy) Enemy.DestroyLasers();
             Destroy(gameObject);
         }
     }

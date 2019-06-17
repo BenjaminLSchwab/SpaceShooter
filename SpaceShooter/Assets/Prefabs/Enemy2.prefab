@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4978061850714698788}
   - component: {fileID: 5945302066381558721}
   - component: {fileID: 8401161228669411650}
+  - component: {fileID: 1887954913261725606}
+  - component: {fileID: 480844255381286285}
   m_Layer: 9
   m_Name: Enemy2
   m_TagString: Untagged
@@ -59,17 +61,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  shotCounter: 0
+  explosion: {fileID: 5828303087710901251, guid: 0ded01c1112369c4bbc4835a57e31fdd,
+    type: 3}
+  laserPrefab: {fileID: 1703989139251503683, guid: 73fa39069d55d6641b7dce0569145dff,
+    type: 3}
   minTimebetweenShots: 0.2
   maxTimeBetweenShots: 3
   laserSpawnDistance: 1
   laserSpeed: 10
-  laserPrefab: {fileID: 1703989139251503683, guid: 73fa39069d55d6641b7dce0569145dff,
-    type: 3}
-  explosion: {fileID: 5828303087710901251, guid: 0ded01c1112369c4bbc4835a57e31fdd,
-    type: 3}
   laserSound: {fileID: 8300000, guid: 7aa0fd4a79ec980409321653535e95bc, type: 3}
+  laserSoundVolume: 0.5
   deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
+  deathSoundVolume: 1
 --- !u!58 &8401161228669411650
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -80,12 +83,46 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.005148232, y: 0}
   serializedVersion: 2
   m_Radius: 0.4613884
+--- !u!114 &1887954913261725606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692907365860094182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6947f3c38810143ac185b7d935353d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
+--- !u!50 &480844255381286285
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692907365860094182}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6914976101565751390
 GameObject:
   m_ObjectHideFlags: 0

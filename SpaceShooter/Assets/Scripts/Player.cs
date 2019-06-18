@@ -134,4 +134,9 @@ public class Player : MonoBehaviour {
         FindObjectOfType<Level>().LoadGameOver(2);
         
     }
+
+    public int GetHealth()
+    {
+        return health;
+    }
 }

@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
 
     public void LoadStartMenu()
     {
+        FindObjectOfType<GameSession>().ResetScore();
         SceneManager.LoadScene(0);
     }
 

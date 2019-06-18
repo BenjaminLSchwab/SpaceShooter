@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy")]
     [SerializeField] float health = 100;
     [SerializeField] GameObject explosion;
+    [SerializeField] int score = 100;
 
     [Header("Lasers")]
     [SerializeField] GameObject laserPrefab;
@@ -82,6 +83,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        FindObjectOfType<GameSession>().AddToScore(score);
         if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
         if (explosion)
         {

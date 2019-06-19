@@ -63,6 +63,7 @@ MonoBehaviour:
   health: 100
   explosion: {fileID: 5828303087710901251, guid: 0ded01c1112369c4bbc4835a57e31fdd,
     type: 3}
+  score: 100
   laserPrefab: {fileID: 1703989139251503683, guid: 73fa39069d55d6641b7dce0569145dff,
     type: 3}
   minTimebetweenShots: 0.2
@@ -101,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6947f3c38810143ac185b7d935353d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 1
 --- !u!50 &6955547152616999427
 Rigidbody2D:
   serializedVersion: 4

@@ -29,6 +29,8 @@ public class Player : MonoBehaviour {
     float yMin;
     float yMax;
 
+    [SerializeField] bool invincible = false;
+
 	// Use this for initialization
 	void Start () {
         SetUpMovementBoundaries();       
@@ -116,10 +118,12 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (invincible) return;
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if (damageDealer != null)
         {
             health -= damageDealer.GetDamage();
+            StartCoroutine(IFrames());
         }
         if (health < 1)
         {
@@ -138,5 +142,12 @@ public class Player : MonoBehaviour {
     public int GetHealth()
     {
         return health;
+    }
+
+    IEnumerator IFrames(float seconds = 1.5f)
+    {
+        invincible = true;
+        yield return new WaitForSeconds(seconds);
+        invincible = false;
     }
 }

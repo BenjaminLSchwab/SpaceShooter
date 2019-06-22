@@ -6,18 +6,29 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
     Player Player;
-    Text Text;
+    [SerializeField] GameObject HealthSprite;
+    [SerializeField] Vector3 SpriteSpacing;
+    List<GameObject> sprites = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         Player = FindObjectOfType<Player>();
-        Text = GetComponent<Text>();
+        ChangeHealth();
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeHealth()
     {
-        Text.text = Player.GetHealth().ToString();
+        foreach (var sprite in sprites)
+        {
+            Destroy(sprite);
+        }
+        sprites.Clear();
+        for (int i = 0; i < Player.GetHealth(); i++)
+        {
+            var HPSprite = Instantiate(HealthSprite, transform.position + SpriteSpacing * i, Quaternion.identity, transform);
+            sprites.Add(HPSprite);
+        }
     }
 }

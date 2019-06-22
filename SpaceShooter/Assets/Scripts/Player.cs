@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
     [SerializeField] float m_speed = 10;
     [SerializeField] float m_padding = 0.02f;
     [SerializeField] int health = 200;
+    [SerializeField] float iFrameTime = 1.5f;
+    [SerializeField] float iFrameFlashRate = 0.25f;
 
     [Header("Projectile")]
     [SerializeField] float m_laserSpeed = 10f;
@@ -24,16 +26,20 @@ public class Player : MonoBehaviour {
 
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
+    HealthDisplay HealthDisplay;
     float xMin;
     float xMax;
     float yMin;
     float yMax;
 
-    [SerializeField] bool invincible = false;
+    SpriteRenderer SpriteRenderer;
+    bool invincible = false;
 
 	// Use this for initialization
 	void Start () {
-        SetUpMovementBoundaries();       
+        SetUpMovementBoundaries();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        HealthDisplay = FindObjectOfType<HealthDisplay>();
 	}
 	
 	// Update is called once per frame
@@ -123,7 +129,8 @@ public class Player : MonoBehaviour {
         if (damageDealer != null)
         {
             health -= damageDealer.GetDamage();
-            StartCoroutine(IFrames());
+            HealthDisplay.ChangeHealth();
+            StartCoroutine(IFrames(iFrameTime));
         }
         if (health < 1)
         {
@@ -147,7 +154,17 @@ public class Player : MonoBehaviour {
     IEnumerator IFrames(float seconds = 1.5f)
     {
         invincible = true;
+        StartCoroutine(FlashSprite());
         yield return new WaitForSeconds(seconds);
         invincible = false;
+    }
+
+    IEnumerator FlashSprite()
+    {
+        while (invincible)
+        {
+            SpriteRenderer.gameObject.SetActive(!SpriteRenderer.gameObject.activeSelf);
+            yield return new WaitForSeconds(iFrameFlashRate);
+        }
     }
 }

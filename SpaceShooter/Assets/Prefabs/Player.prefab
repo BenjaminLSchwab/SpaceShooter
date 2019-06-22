@@ -48,6 +48,8 @@ MonoBehaviour:
   m_speed: 10
   m_padding: 0.02
   health: 3
+  iFrameTime: 2
+  iFrameFlashRate: 0.2
   m_laserSpeed: 10
   m_laserSpawnDistance: 0.7
   m_laserSpawnPeriod: 0.5

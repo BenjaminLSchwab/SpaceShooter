@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,8 +46,17 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Move();
+        Rotate();
         Fire();
 	}
+
+    private void Rotate()
+    {
+        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        Quaternion facingMouse = Quaternion.LookRotation(Vector3.forward,(mousePos - transform.position).normalized);
+        transform.rotation = facingMouse;
+    }
 
     void Move()
     {
@@ -78,22 +88,23 @@ public class Player : MonoBehaviour {
         while (true)
         {
             if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
-            var laserSpawnPos = transform.position + new Vector3(0, m_laserSpawnDistance, -1);
+            var laserSpawnPos = transform.position + (transform.up * m_laserSpawnDistance);
 
             GameObject newLaser = FindFirstInactiveLaser(); //returns null if the pool has no lasers ready
             if (newLaser == null)
             {
-                newLaser = Instantiate(m_laser, laserSpawnPos, Quaternion.identity);
+                newLaser = Instantiate(m_laser, laserSpawnPos, transform.rotation);
                 laserPool.Add(newLaser);
             }
             else
             {
                 newLaser.SetActive(true);
                 newLaser.transform.position = laserSpawnPos;
+                newLaser.transform.rotation = transform.rotation;
             }
 
             var rb = newLaser.GetComponent<Rigidbody2D>();
-            var vel = Vector3.up * m_laserSpeed;
+            var vel = transform.up * m_laserSpeed;
             rb.velocity = vel;
             yield return new WaitForSeconds(m_laserSpawnPeriod);      
         }

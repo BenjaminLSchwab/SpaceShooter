@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5250896151182234190}
   - component: {fileID: 1907874956564409500}
   - component: {fileID: 1941677217458926742}
-  - component: {fileID: 305017913839808122}
   - component: {fileID: 4592909480883189427}
   - component: {fileID: 8382102568392883118}
+  - component: {fileID: 1796082284062787309}
   m_Layer: 11
-  m_Name: EnemyLaser2
+  m_Name: EnemyBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,18 +109,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27699018, y: 0.26785553}
   m_EdgeRadius: 0
---- !u!114 &305017913839808122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703989139251503683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688bc990cb0610245996cf3612595920, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &4592909480883189427
 Rigidbody2D:
   serializedVersion: 4
@@ -155,3 +143,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+--- !u!114 &1796082284062787309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703989139251503683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a773278adee9b634b8a42375337c22a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileType: {fileID: 1703989139251503683, guid: 73fa39069d55d6641b7dce0569145dff,
+    type: 3}
+  numberOfProjectiles: 5
+  projectileSpeed: 4
+  explodeTimer: 0.7

@@ -33,9 +33,12 @@ public class EnemySpawner : MonoBehaviour
             NextSpawner.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)
     {
         for (int i = 0; i < waveConfig.GetNumberOfEnemies(); i++)

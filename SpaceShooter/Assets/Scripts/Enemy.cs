@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float health = 100;
     [SerializeField] GameObject explosion;
     [SerializeField] int score = 100;
+    [SerializeField] Color damageColor = Color.red;
 
     [Header("Lasers")]
     [SerializeField] GameObject laserPrefab;
@@ -22,14 +23,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] [Range(0, 1)] float laserSoundVolume = 0.5f;
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0,1)] float deathSoundVolume = 1f;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] [Range(0, 1)] float damageSoundVolume = 1f;
 
     List<GameObject> laserPool = new List<GameObject>();
     float shotCounter;
+    SpriteRenderer SpriteRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
         shotCounter = UnityEngine.Random.Range(minTimebetweenShots, maxTimeBetweenShots);
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -73,9 +78,14 @@ public class Enemy : MonoBehaviour
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if (damageDealer != null)
         {
+            if (damageSound) AudioSource.PlayClipAtPoint(damageSound, transform.position, damageSoundVolume);
             health -= damageDealer.GetDamage();
         }
-        if (health < 1)
+        if (health == 1)
+        {
+            SpriteRenderer.color = damageColor;
+        }
+        else if (health < 1)
         {
             Die();
         }

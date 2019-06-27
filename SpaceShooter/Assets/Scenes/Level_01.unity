@@ -620,6 +620,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5078539951021770103, guid: 107af77522d579d428a7d1a090717aca,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.143
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 107af77522d579d428a7d1a090717aca, type: 3}
 --- !u!1001 &3715072075754123404
@@ -908,11 +913,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7770797784054661289, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7770797784054661291, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -968,10 +968,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7770797784715659838, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec,
+    - target: {fileID: 7770797784054661288, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec,
         type: 3}
-      propertyPath: m_Layer
-      value: 8
+      propertyPath: laserSoundVolume
+      value: 0.463
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec, type: 3}

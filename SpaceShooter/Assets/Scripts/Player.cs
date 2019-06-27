@@ -24,6 +24,8 @@ public class Player : MonoBehaviour {
     [SerializeField] [Range(0, 1)] float laserSoundVolume = 0.2f;
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 1f;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] [Range(0, 1)] float damageSoundVolume = 1f;
 
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
@@ -139,6 +141,7 @@ public class Player : MonoBehaviour {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if (damageDealer != null)
         {
+            AudioSource.PlayClipAtPoint(damageSound, transform.position, damageSoundVolume);
             health -= damageDealer.GetDamage();
             HealthDisplay.ChangeHealth();
             StartCoroutine(IFrames(iFrameTime));

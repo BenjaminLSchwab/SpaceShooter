@@ -8,6 +8,7 @@ public class EnemyPathing : MonoBehaviour
     Enemy Enemy;
     List<Transform> waypoints = new List<Transform>();
     int waypointIndex = 0;
+    GameSession GameSession;
 
 
     // Start is called before the first frame update
@@ -20,6 +21,8 @@ public class EnemyPathing : MonoBehaviour
         waypoints = waveConfig.GetWaypoints();
         transform.position = waypoints[0].position;
         Enemy = GetComponent<Enemy>();
+        GameSession = FindObjectOfType<GameSession>();
+
     }
 
     // Update is called once per frame
@@ -48,6 +51,7 @@ public class EnemyPathing : MonoBehaviour
         }
         else
         {
+            GameSession.AddToEnemyDeSpawnCount();
          if(Enemy) Enemy.DestroyLasers();
             Destroy(gameObject);
         }

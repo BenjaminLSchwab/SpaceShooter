@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     List<GameObject> laserPool = new List<GameObject>();
     float shotCounter;
     SpriteRenderer SpriteRenderer;
+    GameSession GameSession;
     
     // Start is called before the first frame update
     void Start()
@@ -93,7 +94,9 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        FindObjectOfType<GameSession>().AddToScore(score);
+        GameSession = FindObjectOfType<GameSession>();
+        GameSession.AddToScore(score);
+        GameSession.AddToEnemyKillCount();
         if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
         if (explosion)
         {

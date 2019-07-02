@@ -130,18 +130,18 @@ MonoBehaviour:
     type: 3}
   score: 300
   damageColor: {r: 1, g: 0.3137255, b: 0, a: 1}
-  laserPrefab: {fileID: 1703989139251503683, guid: 73fa39069d55d6641b7dce0569145dff,
+  laserPrefab: {fileID: 1703989139251503683, guid: 7ce7f93ff85a0c84a9a77e2759281449,
     type: 3}
   minTimebetweenShots: 4
   maxTimeBetweenShots: 5
-  laserSpawnDistance: 2
-  laserSpeed: 10
-  aimSpeed: 1.7
-  laserSound: {fileID: 8300000, guid: ed39606de0ade9845bdd99b8270defa7, type: 3}
+  laserSpawnDistance: 1
+  laserSpeed: 12
+  aimSpeed: 1.8
+  laserSound: {fileID: 8300000, guid: 0fc208b54882dd84d9fd7da967fc8771, type: 3}
   laserSoundVolume: 0.5
   deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
   deathSoundVolume: 1
-  damageSound: {fileID: 8300000, guid: 8ecd9edd363b4b341b5eea83b0e62cc2, type: 3}
+  damageSound: {fileID: 8300000, guid: 3c9b39fe8f1d1384fb5aa2ab078267dd, type: 3}
   damageSoundVolume: 0.5
 --- !u!1 &6048086869287573467
 GameObject:

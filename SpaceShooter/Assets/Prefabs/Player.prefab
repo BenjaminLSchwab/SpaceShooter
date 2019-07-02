@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5178346661bc3340a0f7f8c7167136f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 10
+  m_speed: 7
   m_padding: 0.02
   health: 3
   iFrameTime: 2

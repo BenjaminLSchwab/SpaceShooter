@@ -75,7 +75,7 @@ MonoBehaviour:
   laserSoundVolume: 0.5
   deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
   deathSoundVolume: 1
-  damageSound: {fileID: 8300000, guid: 8ecd9edd363b4b341b5eea83b0e62cc2, type: 3}
+  damageSound: {fileID: 8300000, guid: 3c9b39fe8f1d1384fb5aa2ab078267dd, type: 3}
   damageSoundVolume: 0.506
 --- !u!58 &8401161228669411650
 CircleCollider2D:

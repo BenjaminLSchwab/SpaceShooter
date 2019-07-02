@@ -57,7 +57,8 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
-        var laserSpawnPos = transform.position + new Vector3(0, -laserSpawnDistance, -1);
+        //var laserSpawnPos = transform.position + new Vector3(0, -laserSpawnDistance, -1);
+        var laserSpawnPos = transform.position + transform.up * -1 * laserSpawnDistance;
         var laser = FindFirstInactiveLaser();
         if (laser == null)
         {

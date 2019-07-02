@@ -20,3 +20,4 @@ MonoBehaviour:
   spawnRandomFactor: 0.3
   moveSpeed: 5
   numberOfEnemies: 5
+  pathType: 2

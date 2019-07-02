@@ -9,7 +9,9 @@ public class EnemyPathing : MonoBehaviour
     List<Transform> waypoints = new List<Transform>();
     int waypointIndex = 0;
     GameSession GameSession;
-
+    public enum PathType {DeleteAtEnd, Loop, Reverse };
+    PathType pathType = PathType.DeleteAtEnd;
+    bool isReversed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class EnemyPathing : MonoBehaviour
         transform.position = waypoints[0].position;
         Enemy = GetComponent<Enemy>();
         GameSession = FindObjectOfType<GameSession>();
+        pathType = waveConfig.GetPathType();
 
     }
 
@@ -45,15 +48,37 @@ public class EnemyPathing : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
             if (transform.position == targetPosition)
             {
-                waypointIndex++;
+                if (isReversed) { waypointIndex--; }
+                else { waypointIndex++; }
+
+                if (waypointIndex == 0) { isReversed = false; }             
+                
             }
 
         }
         else
         {
-            GameSession.AddToEnemyDeSpawnCount();
-         if(Enemy) Enemy.DestroyLasers();
-            Destroy(gameObject);
+            switch (pathType)
+            {
+                case PathType.DeleteAtEnd:
+                    GameSession.AddToEnemyDeSpawnCount();
+                    if (Enemy) Enemy.DestroyLasers();
+                    Destroy(gameObject);
+                    break;
+
+                case PathType.Loop:
+                    waypointIndex = 0;
+                    break;
+
+                case PathType.Reverse:
+                    isReversed = true;
+                    waypointIndex--;
+                    break;
+
+            }
+
+            
+
         }
     }
 }

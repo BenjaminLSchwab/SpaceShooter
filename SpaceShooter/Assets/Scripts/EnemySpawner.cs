@@ -13,32 +13,19 @@ public class EnemySpawner : MonoBehaviour
 
 
 
-    bool hasBeenDisabled = false;
+
 
     // Start is called before the first frame update
-    private void Start()
-    {
-        StartCoroutine( SpawnAllWaves());
-        
-    }
+
 
     private void OnEnable()
     {
-        if (hasBeenDisabled)
-        {
-            hasBeenDisabled = false;
-            Start();
-        }
-        
-    }
-
-    private void OnDisable()
-    {
-        hasBeenDisabled = true;
+        StartCoroutine(SpawnAllWaves());
     }
 
     private IEnumerator SpawnAllWaves()
     {
+        yield return new WaitForSeconds(1);
         var gameSession = FindObjectOfType<GameSession>();
 
         for (int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++ )
@@ -51,9 +38,6 @@ public class EnemySpawner : MonoBehaviour
         {
             gameSession.SetLastEnemySpawned();
         }
-
-        //yield return new WaitForSeconds(0.5f);
-        //gameSession.CheckForLevelOver();
 
         if (NextSpawner)
         {

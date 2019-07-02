@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6048086868781094699}
   - component: {fileID: 1286932596629719314}
-  - component: {fileID: 5769622905975148945}
   - component: {fileID: 4471171843883099184}
   - component: {fileID: 6955547152616999427}
   - component: {fileID: 2247147780343000528}
+  - component: {fileID: 9047741435079445060}
   m_Layer: 9
   m_Name: Sniper
   m_TagString: Untagged
@@ -48,35 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe856359915523246aa375ba026aacd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5769622905975148945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6048086868781094698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a650f8f87c8d974ea56b0a2473b553f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 2
-  explosion: {fileID: 5828303087710901251, guid: 0ded01c1112369c4bbc4835a57e31fdd,
-    type: 3}
-  score: 300
-  damageColor: {r: 1, g: 0.31193793, b: 0, a: 1}
-  laserPrefab: {fileID: 1703989139251503683, guid: 73fa39069d55d6641b7dce0569145dff,
-    type: 3}
-  minTimebetweenShots: 4
-  maxTimeBetweenShots: 5
-  laserSpawnDistance: 1
-  laserSpeed: 12
-  laserSound: {fileID: 8300000, guid: ed39606de0ade9845bdd99b8270defa7, type: 3}
-  laserSoundVolume: 0.5
-  deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
-  deathSoundVolume: 1
-  damageSound: {fileID: 8300000, guid: 8ecd9edd363b4b341b5eea83b0e62cc2, type: 3}
-  damageSoundVolume: 0.481
 --- !u!114 &4471171843883099184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +92,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -142,6 +113,36 @@ PolygonCollider2D:
       - {x: -0.23455441, y: -0.41136193}
       - {x: 0.2331326, y: -0.4112308}
       - {x: 0.5245148, y: 0.11012411}
+--- !u!114 &9047741435079445060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6048086868781094698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3673515a115b9a2469f5b8bf3886e339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  explosion: {fileID: 5828303087710901251, guid: 0ded01c1112369c4bbc4835a57e31fdd,
+    type: 3}
+  score: 300
+  damageColor: {r: 1, g: 0.3137255, b: 0, a: 1}
+  laserPrefab: {fileID: 1703989139251503683, guid: 73fa39069d55d6641b7dce0569145dff,
+    type: 3}
+  minTimebetweenShots: 4
+  maxTimeBetweenShots: 5
+  laserSpawnDistance: 2
+  laserSpeed: 10
+  aimSpeed: 1.7
+  laserSound: {fileID: 8300000, guid: ed39606de0ade9845bdd99b8270defa7, type: 3}
+  laserSoundVolume: 0.5
+  deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
+  deathSoundVolume: 1
+  damageSound: {fileID: 8300000, guid: 8ecd9edd363b4b341b5eea83b0e62cc2, type: 3}
+  damageSoundVolume: 0.5
 --- !u!1 &6048086869287573467
 GameObject:
   m_ObjectHideFlags: 0

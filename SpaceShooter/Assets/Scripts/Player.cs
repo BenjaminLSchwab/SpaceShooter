@@ -37,6 +37,7 @@ public class Player : MonoBehaviour {
 
     SpriteRenderer SpriteRenderer;
     bool invincible = false;
+    bool readyToFire = true;
 
 	// Use this for initialization
 	void Start () {
@@ -73,22 +74,14 @@ public class Player : MonoBehaviour {
 
     void Fire()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1") && readyToFire)
         {            
-        FiringLaser = StartCoroutine(MakeLaser());
-        }
-
-        if (Input.GetButtonUp("Fire1"))
-        {
-            StopCoroutine(FiringLaser);
+        StartCoroutine(MakeLaser());
         }
     }
 
     IEnumerator MakeLaser()
     {
-
-        while (true)
-        {
             if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
             var laserSpawnPos = transform.position + (transform.up * m_laserSpawnDistance);
 
@@ -108,9 +101,10 @@ public class Player : MonoBehaviour {
             var rb = newLaser.GetComponent<Rigidbody2D>();
             var vel = transform.up * m_laserSpeed;
             rb.velocity = vel;
-            yield return new WaitForSeconds(m_laserSpawnPeriod);      
-        }
 
+            readyToFire = false;
+            yield return new WaitForSeconds(m_laserSpawnPeriod);
+            readyToFire = true;
     }
 
     GameObject FindFirstInactiveLaser()

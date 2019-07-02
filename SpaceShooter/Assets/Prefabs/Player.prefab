@@ -50,7 +50,7 @@ MonoBehaviour:
   health: 3
   iFrameTime: 2
   iFrameFlashRate: 0.2
-  m_laserSpeed: 10
+  m_laserSpeed: 20
   m_laserSpawnDistance: 0.7
   m_laserSpawnPeriod: 0.5
   m_laser: {fileID: 1399114658019198, guid: 1dd3f256e13443844b9beae3757423a4, type: 3}

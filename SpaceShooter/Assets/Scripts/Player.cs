@@ -149,7 +149,7 @@ public class Player : MonoBehaviour {
     private void Die()
     {
         if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         FindObjectOfType<Level>().LoadGameOver(2);
         
     }

@@ -8,7 +8,8 @@ public class RockSpawner : MonoBehaviour
     [SerializeField] List<GameObject> rocks;
     [SerializeField] int minRocksPerBlast = 1;
     [SerializeField] int maxRocksPerBlast = 3;
-    [SerializeField] float rockSpeed = 1f;
+    [SerializeField] float rockMinSpeed = 8f;
+    [SerializeField] float rockMaxSpeed = 12f;
     [SerializeField] float rockSpreadWidth = 1f;
     [SerializeField] float rockSpreadDepth = 1f;
     [SerializeField] GameObject warningSign;
@@ -57,23 +58,26 @@ public class RockSpawner : MonoBehaviour
         {
             var randomXNudge = UnityEngine.Random.Range(-rockSpreadWidth, rockSpreadWidth);
             Vector3 pos = new Vector3(randomXNudge, i * rockSpreadDepth);
+            
 
             var rock = FindFirstInactiveRock();
             if (rock == null)
             {
                 var rockType = UnityEngine.Random.Range(0, rocks.Count);
-                rock = Instantiate(rocks[rockType], transform.position + pos, transform.rotation);
+                rock = Instantiate(rocks[rockType], transform.position + pos, Quaternion.identity);
                 rockPool.Add(rock);
             }
             else
             {
                 rock.SetActive(true);
-                rock.transform.position = transform.position + pos;
-                rock.transform.rotation = transform.rotation;
+                rock.transform.position = transform.position + pos;            
             }
-            
+
+            var rotateAmount = UnityEngine.Random.Range(0, 360);
+            rock.transform.Rotate(0,0,rotateAmount);
             var rb = rock.GetComponent<Rigidbody2D>();
-            rb.velocity = transform.up * -1 * rockSpeed;
+            var vel = UnityEngine.Random.Range(rockMinSpeed, rockMaxSpeed) * transform.up * -1;
+            rb.velocity = vel;
         }
     }
 

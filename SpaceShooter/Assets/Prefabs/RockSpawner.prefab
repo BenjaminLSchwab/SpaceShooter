@@ -44,14 +44,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocks:
+  - {fileID: 86389311480110138, guid: bd780e40040c9b444b8cb1da7693cb70, type: 3}
   - {fileID: 86389311480110138, guid: 09008eb00b40388489401d60af6a8afc, type: 3}
-  minRocksPerBlast: 1
-  maxRocksPerBlast: 3
-  rockSpeed: 10
-  rockSpreadWidth: 2
-  rockSpreadDepth: 3
+  - {fileID: 86389311480110138, guid: fb688a16b1325af4ca8c6fe33d5d2cdf, type: 3}
+  - {fileID: 86389311480110138, guid: 96665c08964bdf942945cd5fdcae15f1, type: 3}
+  minRocksPerBlast: 3
+  maxRocksPerBlast: 7
+  rockMinSpeed: 12
+  rockMaxSpeed: 16
+  rockSpreadWidth: 2.5
+  rockSpreadDepth: 2.8
   warningSign: {fileID: 0}
-  minTimeBetweenBlasts: 8
-  maxTimeBetweenBlasts: 15
-  warningTime: 0.8
+  minTimeBetweenBlasts: 5
+  maxTimeBetweenBlasts: 10
+  warningTime: 1.4
   repeat: 1

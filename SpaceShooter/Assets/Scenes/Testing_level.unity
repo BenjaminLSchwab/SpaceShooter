@@ -468,41 +468,6 @@ PrefabInstance:
       propertyPath: warningSign
       value: 
       objectReference: {fileID: 1754802937}
-    - target: {fileID: 1344259787373063795, guid: 85e37cc9f59139946bbf8f2cd83bcbd0,
-        type: 3}
-      propertyPath: warningTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344259787373063795, guid: 85e37cc9f59139946bbf8f2cd83bcbd0,
-        type: 3}
-      propertyPath: minTimeBetweenBlasts
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344259787373063795, guid: 85e37cc9f59139946bbf8f2cd83bcbd0,
-        type: 3}
-      propertyPath: maxTimeBetweenBlasts
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344259787373063795, guid: 85e37cc9f59139946bbf8f2cd83bcbd0,
-        type: 3}
-      propertyPath: minRocksPerBlast
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344259787373063795, guid: 85e37cc9f59139946bbf8f2cd83bcbd0,
-        type: 3}
-      propertyPath: maxRocksPerBlast
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344259787373063795, guid: 85e37cc9f59139946bbf8f2cd83bcbd0,
-        type: 3}
-      propertyPath: rockSpreadDepth
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344259787373063795, guid: 85e37cc9f59139946bbf8f2cd83bcbd0,
-        type: 3}
-      propertyPath: rockSpreadWidth
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e37cc9f59139946bbf8f2cd83bcbd0, type: 3}
 --- !u!1001 &3536792363642657044

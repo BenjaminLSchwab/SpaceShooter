@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 610f9596d20f55244b067dd27070a8d2, type: 3}
-  m_Name: Wave 3
+  m_Name: Sweep Doubles
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6048086868781094698, guid: e52bde410ea03d9449b53a051e1513bc,
+  enemyPrefab: {fileID: 5692907365860094182, guid: 6e58a6d43e157d74d866d14f1a330356,
     type: 3}
-  pathPrefab: {fileID: 2696262684433381945, guid: a374fa8dae2808549acb9f0d86a38657,
+  pathPrefab: {fileID: 2696262684433381945, guid: 28179492c949f3d408a4fc8bf88ab55e,
     type: 3}
-  timeBetweenSpawns: 3
+  timeBetweenSpawns: 1.3
   spawnRandomFactor: 0.3
-  moveSpeed: 3
-  numberOfEnemies: 4
+  moveSpeed: 5
+  numberOfEnemies: 5
+  pathType: 0

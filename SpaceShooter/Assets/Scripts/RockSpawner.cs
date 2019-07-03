@@ -57,7 +57,9 @@ public class RockSpawner : MonoBehaviour
         for (int i = 0; i < rocksThisBlast; i++)
         {
             var randomXNudge = UnityEngine.Random.Range(-rockSpreadWidth, rockSpreadWidth);
-            Vector3 pos = new Vector3(randomXNudge, i * rockSpreadDepth);
+            var posx = transform.right * randomXNudge;
+            var posy = transform.up * i * rockSpreadDepth;
+            Vector3 pos = posx + posy;
             
 
             var rock = FindFirstInactiveRock();

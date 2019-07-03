@@ -26,6 +26,12 @@ public class Player : MonoBehaviour {
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 1f;
     [SerializeField] AudioClip damageSound;
     [SerializeField] [Range(0, 1)] float damageSoundVolume = 1f;
+    [SerializeField] AudioClip powerDownSound;
+    [SerializeField] [Range(0, 1)] float powerDownSoundVolume = 1f;
+
+    [Header("PowerUp")]
+    [SerializeField] float m_powerUpFirePeriod = .125f;
+    [SerializeField] float m_powerUpTime = 5f;
 
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
@@ -38,6 +44,7 @@ public class Player : MonoBehaviour {
     SpriteRenderer SpriteRenderer;
     bool invincible = false;
     bool readyToFire = true;
+    bool quickFire = false;
 
 	// Use this for initialization
 	void Start () {
@@ -103,7 +110,15 @@ public class Player : MonoBehaviour {
             rb.velocity = vel;
 
             readyToFire = false;
+        if (quickFire)
+        {
+            yield return new WaitForSeconds(m_powerUpFirePeriod);
+        }
+        else
+        {
+
             yield return new WaitForSeconds(m_laserSpawnPeriod);
+        }
             readyToFire = true;
     }
 
@@ -174,5 +189,18 @@ public class Player : MonoBehaviour {
             SpriteRenderer.gameObject.SetActive(!SpriteRenderer.gameObject.activeSelf);
             yield return new WaitForSeconds(iFrameFlashRate);
         }
+    }
+
+    public void QuickFirePowerUp()
+    {
+        StartCoroutine(SetQuickFireBool());
+    }
+
+    IEnumerator SetQuickFireBool()
+    {
+        quickFire = true;
+        yield return new WaitForSeconds(m_powerUpTime);
+        AudioSource.PlayClipAtPoint(powerDownSound, transform.position, powerDownSoundVolume);
+        quickFire = false;
     }
 }

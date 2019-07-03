@@ -56,6 +56,7 @@ public class GameSession : MonoBehaviour
         if (enemiesKilled + enemiesDeSpawned == enemiesSpawned)
         {
             yield return new WaitForSeconds(loadNextLevelDelay);
+            ResetEnemyCounts();
             FindObjectOfType<Level>().LoadNextLevel();
         }
     }
@@ -92,5 +93,6 @@ public class GameSession : MonoBehaviour
         lastEnemySpawned = LastEnemySpawned;
         StartCoroutine( CheckForLevelOver());
     }
+
 
 }

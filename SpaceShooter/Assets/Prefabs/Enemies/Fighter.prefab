@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 8401161228669411650}
   - component: {fileID: 1887954913261725606}
   - component: {fileID: 480844255381286285}
+  - component: {fileID: 1195443956107405207}
+  - component: {fileID: 2460539061976640513}
   m_Layer: 9
-  m_Name: Enemy2
+  m_Name: Fighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +57,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5692907365860094182}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a650f8f87c8d974ea56b0a2473b553f, type: 3}
   m_Name: 
@@ -127,6 +129,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1195443956107405207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692907365860094182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c6b25d259970c4d87edbf5fe47f85c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  explosion: {fileID: 5828303087710901251, guid: 0ded01c1112369c4bbc4835a57e31fdd,
+    type: 3}
+  score: 155
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
+  deathSoundVolume: 1
+  damageSound: {fileID: 8300000, guid: 3c9b39fe8f1d1384fb5aa2ab078267dd, type: 3}
+  damageSoundVolume: 0.5
+--- !u!114 &2460539061976640513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692907365860094182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7091082b6cf5b340839170f60bcac1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 2442701774300869314, guid: 6a7bebde23a85144a9df62851cbf5ced,
+    type: 3}
+  minTimebetweenShots: 0.2
+  maxTimeBetweenShots: 3
+  laserSpawnDistance: 1
+  laserSpeed: 10
+  laserSound: {fileID: 8300000, guid: 7aa0fd4a79ec980409321653535e95bc, type: 3}
+  laserSoundVolume: 0.5
 --- !u!1 &6914976101565751390
 GameObject:
   m_ObjectHideFlags: 0

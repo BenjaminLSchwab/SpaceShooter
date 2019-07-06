@@ -50,9 +50,9 @@ public class GameSession : MonoBehaviour
 
     public IEnumerator CheckForLevelOver()
     {
-        Debug.Log("Checking counts, Sp:" + enemiesSpawned + " , Kl:" + enemiesKilled + " , De:" + enemiesDeSpawned);
+        //Debug.Log("Checking counts, Sp:" + enemiesSpawned + " , Kl:" + enemiesKilled + " , De:" + enemiesDeSpawned);
         if (!lastEnemySpawned) { yield break; }
-        Debug.Log("Last Enemy has spawned");
+        //Debug.Log("Last Enemy has spawned");
         if (enemiesKilled + enemiesDeSpawned == enemiesSpawned)
         {
             yield return new WaitForSeconds(loadNextLevelDelay);

@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93884fa9e1988214690ae9d7bc6dd321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 175
+  speed: 200
   aimSpeed: 80
   detectionCone: 20
   thrustSound: {fileID: 8300000, guid: 452b7ba1644ee0441aae00701bb1970b, type: 3}

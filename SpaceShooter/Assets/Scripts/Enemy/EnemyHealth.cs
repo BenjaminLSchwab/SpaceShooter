@@ -59,6 +59,15 @@ public class EnemyHealth : MonoBehaviour
             var explosionfx = Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(explosionfx, 1f);
         }
+        var weapons = GetComponent<EnemyWeapons>();
+        if (weapons) { weapons.DestroyLasers(); }
+        Destroy(gameObject);
+    }
+
+    public void DeSpawn()
+    {
+        GameSession = FindObjectOfType<GameSession>();
+        GameSession.AddToEnemyDeSpawnCount();
         GetComponent<EnemyWeapons>().DestroyLasers();
         Destroy(gameObject);
     }

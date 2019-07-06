@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour
 {
     WaveConfig waveConfig;
-    Enemy Enemy;
+    EnemyHealth EnemyHealth;
     List<Transform> waypoints = new List<Transform>();
     int waypointIndex = 0;
     GameSession GameSession;
@@ -22,7 +22,7 @@ public class EnemyPathing : MonoBehaviour
         }
         waypoints = waveConfig.GetWaypoints();
         transform.position = waypoints[0].position;
-        Enemy = GetComponent<Enemy>();
+        EnemyHealth = GetComponent<EnemyHealth>();
         GameSession = FindObjectOfType<GameSession>();
         pathType = waveConfig.GetPathType();
 
@@ -61,9 +61,7 @@ public class EnemyPathing : MonoBehaviour
             switch (pathType)
             {
                 case PathType.DeleteAtEnd:
-                    GameSession.AddToEnemyDeSpawnCount();
-                    if (Enemy) Enemy.DestroyLasers();
-                    Destroy(gameObject);
+                    EnemyHealth.DeSpawn();
                     break;
 
                 case PathType.Loop:

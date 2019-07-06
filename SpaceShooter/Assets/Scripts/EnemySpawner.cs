@@ -63,7 +63,8 @@ public class EnemySpawner : MonoBehaviour
             Quaternion.identity
             );
 
-            newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
+            var pathing = newEnemy.GetComponent<EnemyPathing>();
+            if (pathing) { pathing.SetWaveConfig(waveConfig); }
         yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
         }
         

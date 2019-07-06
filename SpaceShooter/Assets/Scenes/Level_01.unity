@@ -593,7 +593,7 @@ PrefabInstance:
     - target: {fileID: 6394439461369011834, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
         type: 3}
       propertyPath: waveConfigs.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6394439461369011834, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
         type: 3}
@@ -617,13 +617,19 @@ PrefabInstance:
         type: 3}
       propertyPath: waveConfigs.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 2ea10c25844cfa348a2308005e2ae91e,
+      objectReference: {fileID: 11400000, guid: e9766e2afad72f942b0755c81b247296,
         type: 2}
     - target: {fileID: 6394439461369011834, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
         type: 3}
       propertyPath: isFinalSpawnerInLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6394439461369011834, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
+        type: 3}
+      propertyPath: waveConfigs.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ea10c25844cfa348a2308005e2ae91e,
+        type: 2}
     - target: {fileID: 6394439461369011835, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
         type: 3}
       propertyPath: m_LocalPosition.x

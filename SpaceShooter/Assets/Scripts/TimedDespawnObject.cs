@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rock : MonoBehaviour
+public class TimedDespawnObject : MonoBehaviour
 {
     [SerializeField] float destroyTime = 10;
     // Start is called before the first frame update

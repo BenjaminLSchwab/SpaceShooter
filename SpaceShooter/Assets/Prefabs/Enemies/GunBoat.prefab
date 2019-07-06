@@ -9,14 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6048086868781094699}
+  - component: {fileID: 1286932596629719314}
   - component: {fileID: 4471171843883099184}
   - component: {fileID: 6955547152616999427}
   - component: {fileID: 5910872372138113609}
-  - component: {fileID: 7850887748828367698}
-  - component: {fileID: 4962549064463200841}
-  - component: {fileID: 1587549742574150438}
+  - component: {fileID: 2102923947}
   m_Layer: 9
-  m_Name: Drone
+  m_Name: GunBoat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,12 +30,24 @@ Transform:
   m_GameObject: {fileID: 6048086868781094698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.44, z: -1}
-  m_LocalScale: {x: 1.4399, y: 1.4399, z: 1.4399}
+  m_LocalScale: {x: 3.1956124, y: 2.9051023, z: 2.9051023}
   m_Children:
   - {fileID: 6048086869287573412}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1286932596629719314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6048086868781094698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe856359915523246aa375ba026aacd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4471171843883099184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,14 +69,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6048086868781094698}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.3
-  m_AngularDrag: 1
-  m_GravityScale: 0
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -87,13 +98,13 @@ MonoBehaviour:
   explosion: {fileID: 5828303087710901251, guid: 0ded01c1112369c4bbc4835a57e31fdd,
     type: 3}
   score: 100
-  damageColor: {r: 1, g: 1, b: 1, a: 1}
-  deathSound: {fileID: 8300000, guid: 6ccc4e3df249e89458140de95b10f531, type: 3}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
   deathSoundVolume: 1
   damageSound: {fileID: 8300000, guid: 3c9b39fe8f1d1384fb5aa2ab078267dd, type: 3}
-  damageSoundVolume: 0.791
---- !u!70 &7850887748828367698
-CapsuleCollider2D:
+  damageSoundVolume: 0.48
+--- !u!60 &2102923947
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,54 +113,35 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.018274546}
-  m_Size: {x: 0.5, y: 0.65981245}
-  m_Direction: 0
---- !u!114 &4962549064463200841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6048086868781094698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93884fa9e1988214690ae9d7bc6dd321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 200
-  aimSpeed: 80
-  detectionCone: 20
-  thrustSound: {fileID: 8300000, guid: 452b7ba1644ee0441aae00701bb1970b, type: 3}
-  thrustSoundVolume: 1
-  thrustSoundInterval: 1.2
-  angle: 0
---- !u!114 &1587549742574150438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6048086868781094698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e1fc3ddb57d7aa459ff1304e1ef6f76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detonateDistance: 3.5
-  Projectiles: 8
-  projectileType: {fileID: 1703989139251503683, guid: d40b71196c66a6f4fae95de008d76bb3,
-    type: 3}
-  projectileSpeed: 5
-  distanceCheckPeriod: 0.4
-  warningPeriod: 0.5
-  WarningSound: {fileID: 8300000, guid: f9a886e596ade264589866f5a9c67e1e, type: 3}
-  WarningSoundVolume: 1
-  ExplosionSound: {fileID: 8300000, guid: 30d910493a0a4f149b6e9faab618e66b, type: 3}
-  ExplosionSoundVolume: 1
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5146651, y: 0.23942605}
+      - {x: 0.1852952, y: 0.24288033}
+      - {x: 0.22535884, y: 0.35879412}
+      - {x: -0.22222865, y: 0.36292827}
+      - {x: -0.17296326, y: 0.23023367}
+      - {x: -0.50430316, y: 0.23530193}
+      - {x: -0.5698111, y: 0.14894761}
+      - {x: -0.45007226, y: -0.26928395}
+      - {x: -0.1440637, y: -0.26532537}
+      - {x: -0.1007856, y: -0.36095855}
+      - {x: 0.101049855, y: -0.36136314}
+      - {x: 0.14496137, y: -0.26615834}
+      - {x: 0.46055126, y: -0.26930988}
+      - {x: 0.5836092, y: 0.15142602}
 --- !u!1 &6048086869287573467
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +210,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0695c4d7c6c992b499011354ef37c33f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 48147c55a6e52cd4abd3b377309b1ce4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

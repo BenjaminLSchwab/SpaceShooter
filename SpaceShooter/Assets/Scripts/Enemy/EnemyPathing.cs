@@ -8,7 +8,6 @@ public class EnemyPathing : MonoBehaviour
     EnemyHealth EnemyHealth;
     List<Transform> waypoints = new List<Transform>();
     int waypointIndex = 0;
-    GameSession GameSession;
     public enum PathType {DeleteAtEnd, Loop, Reverse };
     PathType pathType = PathType.DeleteAtEnd;
     bool isReversed = false;
@@ -23,7 +22,6 @@ public class EnemyPathing : MonoBehaviour
         waypoints = waveConfig.GetWaypoints();
         transform.position = waypoints[0].position;
         EnemyHealth = GetComponent<EnemyHealth>();
-        GameSession = FindObjectOfType<GameSession>();
         pathType = waveConfig.GetPathType();
 
     }

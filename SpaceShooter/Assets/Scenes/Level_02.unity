@@ -1188,6 +1188,12 @@ PrefabInstance:
       propertyPath: laserSoundVolume
       value: 0.463
       objectReference: {fileID: 0}
+    - target: {fileID: 7770797784054661288, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec,
+        type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 1399114658019198, guid: 1dd3f256e13443844b9beae3757423a4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec, type: 3}
 --- !u!1001 &8521631461151251398

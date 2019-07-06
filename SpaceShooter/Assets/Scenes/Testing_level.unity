@@ -247,6 +247,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcffad3cf3a610344901f4fc61050772, type: 3}
+--- !u!1001 &2102923945
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6048086868781094698, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_Name
+      value: GunBoat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048086868781094699, guid: f660572891606394ca3d52085f82a52d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f660572891606394ca3d52085f82a52d, type: 3}
 --- !u!1001 &285838506100619944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 6394439461369011834, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
         type: 3}
       propertyPath: waveConfigs.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6394439461369011834, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
         type: 3}
@@ -615,7 +684,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waveConfigs.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 104a8680388dec74995bfb2f8b8a49e9,
+      objectReference: {fileID: 11400000, guid: e9766e2afad72f942b0755c81b247296,
         type: 2}
     - target: {fileID: 6394439461369011834, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
         type: 3}
@@ -890,6 +959,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7770797784054661288, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec,
+        type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 1399114658019198, guid: 1dd3f256e13443844b9beae3757423a4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec, type: 3}
 --- !u!1001 &8521631461151251398

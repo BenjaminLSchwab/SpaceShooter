@@ -7,17 +7,17 @@ public class Player : MonoBehaviour {
 
     //configuration variables
     [Header("Player")]
-    [SerializeField] float m_speed = 10;
-    [SerializeField] float m_padding = 0.02f;
-    [SerializeField] int health = 200;
+    [SerializeField] float speed = 10;
+    [SerializeField] float padding = 0.02f;
+    [SerializeField] int health = 3;
     [SerializeField] float iFrameTime = 1.5f;
     [SerializeField] float iFrameFlashRate = 0.25f;
 
     [Header("Projectile")]
-    [SerializeField] float m_laserSpeed = 10f;
-    [SerializeField] float m_laserSpawnDistance = .1f;
-    [SerializeField] float m_laserSpawnPeriod = .5f;
-    [SerializeField] GameObject m_laser;
+    [SerializeField] float laserSpeed = 10f;
+    [SerializeField] float laserSpawnDistance = .1f;
+    [SerializeField] float laserSpawnPeriod = .5f;
+    [SerializeField] GameObject laser;
 
     [Header("Sound")]
     [SerializeField] AudioClip laserSound;
@@ -30,12 +30,14 @@ public class Player : MonoBehaviour {
     [SerializeField] [Range(0, 1)] float powerDownSoundVolume = 1f;
 
     [Header("PowerUp")]
-    [SerializeField] float m_powerUpFirePeriod = .125f;
-    [SerializeField] float m_powerUpTime = 5f;
+    [SerializeField] float powerUpFirePeriod = .125f;
+    [SerializeField] float powerUpTime = 5f;
 
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
     HealthDisplay HealthDisplay;
+    DamageDealer DamageDealer;
+
     float xMin;
     float xMax;
     float yMin;
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour {
         SetUpMovementBoundaries();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         HealthDisplay = FindObjectOfType<HealthDisplay>();
+        DamageDealer = GetComponent<DamageDealer>();
 	}
 	
 	// Update is called once per frame
@@ -70,8 +73,8 @@ public class Player : MonoBehaviour {
 
     void Move()
     {
-        var deltaX = Input.GetAxis("Horizontal") * m_speed * Time.deltaTime;
-        var deltaY = Input.GetAxis("Vertical") * m_speed * Time.deltaTime;
+        var deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        var deltaY = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
@@ -90,12 +93,12 @@ public class Player : MonoBehaviour {
     IEnumerator MakeLaser()
     {
             if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
-            var laserSpawnPos = transform.position + (transform.up * m_laserSpawnDistance);
+            var laserSpawnPos = transform.position + (transform.up * laserSpawnDistance);
 
             GameObject newLaser = FindFirstInactiveLaser(); //returns null if the pool has no lasers ready
             if (newLaser == null)
             {
-                newLaser = Instantiate(m_laser, laserSpawnPos, transform.rotation);
+                newLaser = Instantiate(laser, laserSpawnPos, transform.rotation);
                 laserPool.Add(newLaser);
             }
             else
@@ -106,18 +109,18 @@ public class Player : MonoBehaviour {
             }
 
             var rb = newLaser.GetComponent<Rigidbody2D>();
-            var vel = transform.up * m_laserSpeed;
+            var vel = transform.up * laserSpeed;
             rb.velocity = vel;
 
             readyToFire = false;
         if (quickFire)
         {
-            yield return new WaitForSeconds(m_powerUpFirePeriod);
+            yield return new WaitForSeconds(powerUpFirePeriod);
         }
         else
         {
 
-            yield return new WaitForSeconds(m_laserSpawnPeriod);
+            yield return new WaitForSeconds(laserSpawnPeriod);
         }
             readyToFire = true;
     }
@@ -138,10 +141,10 @@ public class Player : MonoBehaviour {
     void SetUpMovementBoundaries()
     {
         Camera gameCamera = Camera.main;
-        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0 + m_padding, 0, 0)).x;
-        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1 - m_padding, 0, 0)).x;
-        yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0 + m_padding, 0)).y;
-        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1 - m_padding, 0)).y;
+        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0 + padding, 0, 0)).x;
+        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1 - padding, 0, 0)).x;
+        yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0 + padding, 0)).y;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1 - padding, 0)).y;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -177,9 +180,11 @@ public class Player : MonoBehaviour {
     IEnumerator IFrames(float seconds = 1.5f)
     {
         invincible = true;
+        DamageDealer.SetDamage(0);
         StartCoroutine(FlashSprite());
         yield return new WaitForSeconds(seconds);
         invincible = false;
+        DamageDealer.SetDamage(1);
     }
 
     IEnumerator FlashSprite()
@@ -199,7 +204,7 @@ public class Player : MonoBehaviour {
     IEnumerator SetQuickFireBool()
     {
         quickFire = true;
-        yield return new WaitForSeconds(m_powerUpTime);
+        yield return new WaitForSeconds(powerUpTime);
         AudioSource.PlayClipAtPoint(powerDownSound, transform.position, powerDownSoundVolume);
         quickFire = false;
     }

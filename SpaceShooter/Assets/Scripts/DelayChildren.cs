@@ -21,7 +21,6 @@ public class DelayChildren : MonoBehaviour
     IEnumerator WaitAndAwake()
     {
         yield return new WaitForSeconds(time);
-        print("Awaking!");
         foreach (var child in children)
         {
             child.SetActive(true);

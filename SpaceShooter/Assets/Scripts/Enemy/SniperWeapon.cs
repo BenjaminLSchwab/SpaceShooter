@@ -8,9 +8,9 @@ public class SniperWeapon : EnemyWeapons
     [SerializeField] float aimSpeed = 0.1f;
     GameObject player;
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        //base.Start();
+        base.Start();
         player = FindObjectOfType<Player>().gameObject;
     }
 

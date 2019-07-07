@@ -19,11 +19,13 @@ public class ExplodeProximity : MonoBehaviour
     float projectileRotationOffset;
     List<GameObject> laserPool;
     GameObject player;
+    EnemyCounter EnemyCounter;
 
     private void Start()
     {
         player = FindObjectOfType<Player>().gameObject;
         laserPool = new List<GameObject>();
+        EnemyCounter = FindObjectOfType<EnemyCounter>();
     }
 
     private void OnEnable()
@@ -76,7 +78,7 @@ public class ExplodeProximity : MonoBehaviour
                 projectile.GetComponent<Rigidbody2D>().velocity = projectile.transform.up * projectileSpeed;
             }
         }
-        FindObjectOfType<GameSession>().AddToEnemyDeSpawnCount();
+        EnemyCounter.AddToEnemyDeSpawnCount();
         gameObject.SetActive(false);
     }
 

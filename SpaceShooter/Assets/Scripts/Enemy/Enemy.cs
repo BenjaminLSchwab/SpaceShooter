@@ -30,12 +30,14 @@ public class Enemy : MonoBehaviour
     float shotCounter;
     SpriteRenderer SpriteRenderer;
     GameSession GameSession;
+    EnemyCounter EnemyCounter;
     
     // Start is called before the first frame update
     void Start()
     {
         shotCounter = UnityEngine.Random.Range(minTimebetweenShots, maxTimeBetweenShots);
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        EnemyCounter = FindObjectOfType<EnemyCounter>();
     }
 
     // Update is called once per frame
@@ -97,7 +99,7 @@ public class Enemy : MonoBehaviour
     {
         GameSession = FindObjectOfType<GameSession>();
         GameSession.AddToScore(score);
-        GameSession.AddToEnemyKillCount();
+        EnemyCounter.AddToEnemyKillCount();
         if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
         if (explosion)
         {

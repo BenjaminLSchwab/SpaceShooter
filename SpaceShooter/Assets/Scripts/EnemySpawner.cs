@@ -8,7 +8,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int startingWave = 0;
     [SerializeField] EnemySpawner NextSpawner;
     [SerializeField] float DelayNextSpawner = 0f;
-    [SerializeField] bool isFinalSpawnerInLevel = false;
 
 
 
@@ -23,21 +22,17 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnAllWaves());
     }
 
+
+
     private IEnumerator SpawnAllWaves()
     {
         yield return new WaitForSeconds(1);
-        var gameSession = FindObjectOfType<GameSession>();
 
         for (int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++ )
         {
             yield return SpawnAllEnemiesInWave(waveConfigs[waveIndex]);
-            gameSession.AddToEnemySpawnCount(waveConfigs[waveIndex].GetNumberOfEnemies());
         }
     
-        if (isFinalSpawnerInLevel)
-        {
-            gameSession.SetLastEnemySpawned();
-        }
 
         if (NextSpawner)
         {
@@ -49,6 +44,16 @@ public class EnemySpawner : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    public int GetEnemyCount()
+    {
+        var ans = 0;
+        foreach (var wave in waveConfigs)
+        {
+            ans += wave.GetNumberOfEnemies();
+        }
+        return ans;
     }
 
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)

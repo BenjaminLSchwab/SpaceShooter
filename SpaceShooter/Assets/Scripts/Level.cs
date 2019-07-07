@@ -5,12 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
-
+    [SerializeField] float nextLevelDelay = 2f;
     public void LoadStartMenu()
     {
         var gameSession = FindObjectOfType<GameSession>();
         gameSession.ResetScore();
-        gameSession.ResetEnemyCounts();
         SceneManager.LoadScene(0);
     }
 
@@ -20,12 +19,12 @@ public class Level : MonoBehaviour
         SceneManager.LoadScene("Level_01");
     }
 
-    public void LoadGameOver(int delay = 0)
+    public void LoadGameOver()
     {
-        StartCoroutine(WaitAndLoad(delay));
+        StartCoroutine(WaitAndLoad(nextLevelDelay));
     }
 
-    IEnumerator WaitAndLoad(int delay)
+    IEnumerator WaitAndLoad(float delay)
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("GameOver");
@@ -38,7 +37,13 @@ public class Level : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        
+
+        StartCoroutine(WaitAndLoadNextLevel());
+    }
+
+    IEnumerator WaitAndLoadNextLevel()
+    {
+        yield return new WaitForSeconds(nextLevelDelay);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

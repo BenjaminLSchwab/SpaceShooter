@@ -49,7 +49,7 @@ public class EnemyPathing : MonoBehaviour
                 if (isReversed) { waypointIndex--; }
                 else { waypointIndex++; }
 
-                if (waypointIndex == 0) { isReversed = false; }             
+                if (waypointIndex == 1) { isReversed = false; }             
                 
             }
 
@@ -63,7 +63,7 @@ public class EnemyPathing : MonoBehaviour
                     break;
 
                 case PathType.Loop:
-                    waypointIndex = 0;
+                    waypointIndex = 1;
                     break;
 
                 case PathType.Reverse:

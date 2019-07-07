@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5828303087710901253}
   - component: {fileID: 5828303087710901250}
   m_Layer: 0
-  m_Name: Explosion Particles
+  m_Name: Explosion Particles Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5828303087710901251}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.394925, y: 8.357609, z: -1.0587502}
-  m_LocalScale: {x: 0.39892763, y: 0.39892763, z: 0.39892763}
+  m_LocalScale: {x: 0.8014624, y: 0.8014624, z: 0.8014624}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

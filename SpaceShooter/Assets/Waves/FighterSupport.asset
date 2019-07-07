@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610f9596d20f55244b067dd27070a8d2, type: 3}
+  m_Name: FighterSupport
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 5692907365860094182, guid: 6e58a6d43e157d74d866d14f1a330356,
+    type: 3}
+  pathPrefab: {fileID: 2696262684433381945, guid: 28179492c949f3d408a4fc8bf88ab55e,
+    type: 3}
+  timeBetweenSpawns: 3
+  spawnRandomFactor: 0.3
+  moveSpeed: 4
+  numberOfEnemies: 3
+  pathType: 1

@@ -5,8 +5,8 @@ using UnityEngine;
 public class SniperWeapon : EnemyWeapons
 {
     [Header("Sniper")]
-    [SerializeField] float aimSpeed = 0.1f;
-    GameObject player;
+    [SerializeField] protected float aimSpeed = 0.1f;
+    protected GameObject player;
     // Start is called before the first frame update
     new void Start()
     {
@@ -21,7 +21,7 @@ public class SniperWeapon : EnemyWeapons
         CountDownAndShoot();
     }
 
-    private void TurnTowardTarget()
+    protected void TurnTowardTarget()
     {
         Quaternion facingPlayer = Quaternion.LookRotation(Vector3.forward, (transform.position - player.transform.position).normalized);
         transform.rotation = Quaternion.Lerp(transform.rotation, facingPlayer, Time.deltaTime * aimSpeed);

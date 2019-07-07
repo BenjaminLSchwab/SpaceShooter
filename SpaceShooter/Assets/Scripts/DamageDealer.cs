@@ -10,11 +10,6 @@ public class DamageDealer : MonoBehaviour
         return m_damage;
     }
 
-    public void Hit()
-    {
-        Destroy(gameObject);
-    }
-
     public void SetDamage(int damage)
     {
         m_damage = damage;

@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject explosion;
     [SerializeField] int score = 100;
     [SerializeField] Color damageColor = Color.red;
+    [SerializeField] float DamageFlashPeriod = 0.05f;
 
     [Header("Sounds")]
     [SerializeField] AudioClip deathSound;
@@ -36,16 +37,20 @@ public class EnemyHealth : MonoBehaviour
         if (damageDealer != null)
         {
             if (damageSound) AudioSource.PlayClipAtPoint(damageSound, transform.position, damageSoundVolume);
+            StartCoroutine(FlashDamageSprite());
             health -= damageDealer.GetDamage();
         }
-        if (health == 1)
-        {
-            SpriteRenderer.color = damageColor;
-        }
-        else if (health < 1)
+        if (health < 1)
         {
             Die();
         }
+    }
+
+    IEnumerator FlashDamageSprite()
+    {
+        SpriteRenderer.color = damageColor;
+        yield return new WaitForSeconds(DamageFlashPeriod);
+        SpriteRenderer.color = Color.white;
     }
 
     private void Die()

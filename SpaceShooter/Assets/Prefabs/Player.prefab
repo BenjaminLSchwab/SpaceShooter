@@ -46,15 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5178346661bc3340a0f7f8c7167136f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 7
-  m_padding: 0.02
+  speed: 10
+  padding: 0.02
   health: 3
   iFrameTime: 2
   iFrameFlashRate: 0.2
-  m_laserSpeed: 20
-  m_laserSpawnDistance: 0.7
-  m_laserSpawnPeriod: 0.5
-  m_laser: {fileID: 1399114658019198, guid: 1dd3f256e13443844b9beae3757423a4, type: 3}
+  laserSpeed: 20
+  laserSpawnDistance: 0.1
+  laserSpawnPeriod: 0.5
+  laser: {fileID: 678956732741992864, guid: 8de7bb2908688134c822814e8a795031, type: 3}
   laserSound: {fileID: 8300000, guid: 1b80c7ba139e75f4f874f889609d752f, type: 3}
   laserSoundVolume: 0.519
   deathSound: {fileID: 8300000, guid: 2d7e1b0e07c8a364bbf43a32b4587008, type: 3}
@@ -63,8 +63,8 @@ MonoBehaviour:
   damageSoundVolume: 1
   powerDownSound: {fileID: 8300000, guid: 45f4c64d8907c0745b0ff80651a50f8d, type: 3}
   powerDownSoundVolume: 1
-  m_powerUpFirePeriod: 0.125
-  m_powerUpTime: 5
+  powerUpFirePeriod: 0.125
+  powerUpTime: 5
 --- !u!60 &2284575130035180793
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6947f3c38810143ac185b7d935353d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  m_damage: 1
 --- !u!1 &7770797784715659838
 GameObject:
   m_ObjectHideFlags: 0

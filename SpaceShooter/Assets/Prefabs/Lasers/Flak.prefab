@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8382102568392883118}
   - component: {fileID: 1796082284062787309}
   m_Layer: 11
-  m_Name: EnemyBomb
+  m_Name: Flak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 438b34091a567014ba7b289bb0648c5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd38ec5b167c1fa4584608b69e5d0c4c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.46}
+    oldSize: {x: 0.37, y: 0.36}
     newSize: {x: 0.09, y: 0.37}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a773278adee9b634b8a42375337c22a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: {fileID: 1703989139251503683, guid: 73fa39069d55d6641b7dce0569145dff,
+  projectileType: {fileID: 1703989139251503683, guid: d40b71196c66a6f4fae95de008d76bb3,
     type: 3}
-  numberOfProjectiles: 5
-  projectileSpeed: 4
-  explodeTimer: 0.7
+  numberOfProjectiles: 6
+  projectileSpeed: 6
+  explodeTimer: 0.8

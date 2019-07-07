@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610f9596d20f55244b067dd27070a8d2, type: 3}
+  m_Name: GunBoat
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 6048086868781094698, guid: f660572891606394ca3d52085f82a52d,
+    type: 3}
+  pathPrefab: {fileID: 2696262684433381945, guid: cbce7fe9f44c380459e44525fcf4957b,
+    type: 3}
+  timeBetweenSpawns: 0.1
+  spawnRandomFactor: 0.1
+  moveSpeed: 3
+  numberOfEnemies: 1
+  pathType: 2

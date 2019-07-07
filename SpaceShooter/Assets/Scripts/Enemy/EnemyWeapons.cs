@@ -6,8 +6,8 @@ public class EnemyWeapons : MonoBehaviour
 {
     [Header("Lasers")]
     [SerializeField] GameObject laserPrefab;
-    [SerializeField] float minTimebetweenShots = 0.2f;
-    [SerializeField] float maxTimeBetweenShots = 3f;
+    [SerializeField] protected float minTimebetweenShots = 0.2f;
+    [SerializeField] protected float maxTimeBetweenShots = 3f;
     [SerializeField] float laserSpawnDistance = .1f;
     [SerializeField] float laserSpeed = 10f;
 
@@ -16,7 +16,7 @@ public class EnemyWeapons : MonoBehaviour
     [SerializeField] [Range(0, 1)] float laserSoundVolume = 0.5f;
 
     List<GameObject> laserPool = new List<GameObject>();
-    float shotCounter;
+    protected float shotCounter;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -38,7 +38,7 @@ public class EnemyWeapons : MonoBehaviour
         }
     }
 
-    private void Fire()
+    protected void Fire()
     {
         if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
         //var laserSpawnPos = transform.position + new Vector3(0, -laserSpawnDistance, -1);

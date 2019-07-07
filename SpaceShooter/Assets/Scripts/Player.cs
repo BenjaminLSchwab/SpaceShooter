@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
     [SerializeField] int health = 3;
     [SerializeField] float iFrameTime = 1.5f;
     [SerializeField] float iFrameFlashRate = 0.25f;
+    [SerializeField] SpriteRenderer MainSprite;
 
     [Header("Projectile")]
     [SerializeField] float laserSpeed = 10f;
@@ -28,10 +29,13 @@ public class Player : MonoBehaviour {
     [SerializeField] [Range(0, 1)] float damageSoundVolume = 1f;
     [SerializeField] AudioClip powerDownSound;
     [SerializeField] [Range(0, 1)] float powerDownSoundVolume = 1f;
+    [SerializeField] AudioClip shieldBreakSound;
+    [SerializeField] [Range(0, 1)] float shieldBreakSoundVolume = 1f;
 
     [Header("PowerUp")]
     [SerializeField] float powerUpFirePeriod = .125f;
     [SerializeField] float powerUpTime = 5f;
+    [SerializeField] SpriteRenderer ShieldSprite;
 
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
@@ -43,15 +47,14 @@ public class Player : MonoBehaviour {
     float yMin;
     float yMax;
 
-    SpriteRenderer SpriteRenderer;
     bool invincible = false;
     bool readyToFire = true;
     bool quickFire = false;
+    bool shielded = false;
 
 	// Use this for initialization
 	void Start () {
         SetUpMovementBoundaries();
-        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         HealthDisplay = FindObjectOfType<HealthDisplay>();
         DamageDealer = GetComponent<DamageDealer>();
 	}
@@ -153,15 +156,37 @@ public class Player : MonoBehaviour {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if (damageDealer != null)
         {
-            AudioSource.PlayClipAtPoint(damageSound, transform.position, damageSoundVolume);
-            health -= damageDealer.GetDamage();
-            HealthDisplay.ChangeHealth();
-            StartCoroutine(IFrames(iFrameTime));
+            if (shielded)
+            {
+                RemoveShield();
+            }
+            else
+            {
+            TakeDamage(damageDealer);
+
+            }
         }
         if (health < 1)
         {
             Die();
         }
+    }
+
+    private void RemoveShield()
+    {
+        StartCoroutine(IFrames(iFrameTime));
+        shielded = false;
+        AudioSource.PlayClipAtPoint(shieldBreakSound, transform.position, shieldBreakSoundVolume);
+        ShieldSprite.gameObject.SetActive(false);
+
+    }
+
+    private void TakeDamage(DamageDealer damageDealer)
+    {
+        AudioSource.PlayClipAtPoint(damageSound, transform.position, damageSoundVolume);
+        health -= damageDealer.GetDamage();
+        HealthDisplay.ChangeHealth();
+        StartCoroutine(IFrames(iFrameTime));
     }
 
     private void Die()
@@ -191,7 +216,7 @@ public class Player : MonoBehaviour {
     {
         while (invincible)
         {
-            SpriteRenderer.gameObject.SetActive(!SpriteRenderer.gameObject.activeSelf);
+            MainSprite.gameObject.SetActive(!MainSprite.gameObject.activeSelf);
             yield return new WaitForSeconds(iFrameFlashRate);
         }
     }
@@ -199,6 +224,12 @@ public class Player : MonoBehaviour {
     public void QuickFirePowerUp()
     {
         StartCoroutine(SetQuickFireBool());
+    }
+
+    public void ShieldPowerUp()
+    {
+        shielded = true;
+        ShieldSprite.gameObject.SetActive(true);
     }
 
     IEnumerator SetQuickFireBool()

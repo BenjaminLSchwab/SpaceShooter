@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour
 {
+    [SerializeField] float spinSpeed = 0f; 
     WaveConfig waveConfig;
     EnemyHealth EnemyHealth;
     List<Transform> waypoints = new List<Transform>();
@@ -39,6 +40,8 @@ public class EnemyPathing : MonoBehaviour
 
     private void Move()
     {
+        transform.Rotate(0,0,Time.deltaTime * spinSpeed);
+
         if (waypointIndex <= waypoints.Count - 1)
         {
             var targetPosition = waypoints[waypointIndex].position;

@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class EnemyCannon : SniperWeapon
 {
-    [SerializeField] float recoilAmount = 0.05f;
-    [SerializeField] float recoilSpeed = 1;
-    [SerializeField] float minRotation = -30;
-    [SerializeField] float maxRotation = 30;
-    bool recoiling = false;
-    float startingYValue;
+    [SerializeField] protected float recoilAmount = 0.05f;
+    [SerializeField] protected float recoilSpeed = 1;
+    [SerializeField] protected float minRotation = -30;
+    [SerializeField] protected float maxRotation = 30;
+    protected bool recoiling = false;
+    protected float startingYValue;
     // Start is called before the first frame update
     new void Start()
     {
@@ -27,7 +27,7 @@ public class EnemyCannon : SniperWeapon
         Recoil();
     }
 
-    private void Recoil()
+    protected void Recoil()
     {
         if (recoiling)
         {

@@ -20,11 +20,13 @@ public class EnemyHealth : MonoBehaviour
     SpriteRenderer SpriteRenderer;
     GameSession GameSession;
     EnemyCounter EnemyCounter;
+    DropsOnDeath DropsOnDeath;
     // Start is called before the first frame update
     void Start()
     {
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         EnemyCounter = FindObjectOfType<EnemyCounter>();
+        DropsOnDeath = GetComponent<DropsOnDeath>();
     }
 
     // Update is called once per frame
@@ -68,6 +70,7 @@ public class EnemyHealth : MonoBehaviour
         }
         var weapons = GetComponent<EnemyWeapons>();
         if (weapons) { weapons.DestroyLasers(); }
+        if (DropsOnDeath) { DropsOnDeath.Drop(); }
         Destroy(gameObject);
     }
 

@@ -132,7 +132,7 @@ MonoBehaviour:
   iFrameTime: 2
   iFrameFlashRate: 0.2
   MainSprite: {fileID: 7770797784715659840}
-  laserSpeed: 20
+  laserSpeed: 25
   laserSpawnDistance: 0.1
   laserSpawnPeriod: 0.5
   laser: {fileID: 678956732741992864, guid: 8de7bb2908688134c822814e8a795031, type: 3}

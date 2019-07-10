@@ -541,16 +541,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarningSign
       objectReference: {fileID: 0}
-    - target: {fileID: 3536792361904649197, guid: 7f06be0866a176346b31f0e7017db4cb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3536792361904649197, guid: 7f06be0866a176346b31f0e7017db4cb,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3536792361904649198, guid: 7f06be0866a176346b31f0e7017db4cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -605,21 +595,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3536792362273121089, guid: 7f06be0866a176346b31f0e7017db4cb,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.5372549
-      objectReference: {fileID: 0}
-    - target: {fileID: 3536792362313329066, guid: 7f06be0866a176346b31f0e7017db4cb,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.5372549
-      objectReference: {fileID: 0}
-    - target: {fileID: 3536792362926624360, guid: 7f06be0866a176346b31f0e7017db4cb,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.5372549
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f06be0866a176346b31f0e7017db4cb, type: 3}
@@ -957,6 +932,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942048273627706091, guid: 1cbe52802a62d2f4485e26b974698988,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cbe52802a62d2f4485e26b974698988, type: 3}

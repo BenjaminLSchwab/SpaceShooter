@@ -27,14 +27,12 @@ public class Player : MonoBehaviour {
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 1f;
     [SerializeField] AudioClip damageSound;
     [SerializeField] [Range(0, 1)] float damageSoundVolume = 1f;
-    [SerializeField] AudioClip powerDownSound;
-    [SerializeField] [Range(0, 1)] float powerDownSoundVolume = 1f;
     [SerializeField] AudioClip shieldBreakSound;
     [SerializeField] [Range(0, 1)] float shieldBreakSoundVolume = 1f;
 
     [Header("PowerUp")]
-    [SerializeField] float powerUpFirePeriod = .125f;
-    [SerializeField] float powerUpTime = 5f;
+    [SerializeField] int quickFireCount = 0;
+    [SerializeField] float quickFireEffect = .125f;
     [SerializeField] SpriteRenderer ShieldSprite;
 
     Coroutine FiringLaser;
@@ -117,15 +115,9 @@ public class Player : MonoBehaviour {
             rb.velocity = vel;
 
             readyToFire = false;
-        if (quickFire)
-        {
-            yield return new WaitForSeconds(powerUpFirePeriod);
-        }
-        else
-        {
 
-            yield return new WaitForSeconds(laserSpawnPeriod);
-        }
+            yield return new WaitForSeconds(laserSpawnPeriod - Mathf.Min(quickFireEffect * quickFireCount, laserSpawnPeriod * 0.99f));
+
             readyToFire = true;
     }
 
@@ -184,6 +176,7 @@ public class Player : MonoBehaviour {
 
     private void TakeDamage(DamageDealer damageDealer)
     {
+        quickFireCount = 0;
         AudioSource.PlayClipAtPoint(damageSound, transform.position, damageSoundVolume);
         health -= damageDealer.GetDamage();
         HealthDisplay.ChangeHealth();
@@ -224,20 +217,12 @@ public class Player : MonoBehaviour {
 
     public void QuickFirePowerUp()
     {
-        StartCoroutine(SetQuickFireBool());
+        quickFireCount++;
     }
 
     public void ShieldPowerUp()
     {
         shielded = true;
         ShieldSprite.gameObject.SetActive(true);
-    }
-
-    IEnumerator SetQuickFireBool()
-    {
-        quickFire = true;
-        yield return new WaitForSeconds(powerUpTime);
-        AudioSource.PlayClipAtPoint(powerDownSound, transform.position, powerDownSoundVolume);
-        quickFire = false;
     }
 }

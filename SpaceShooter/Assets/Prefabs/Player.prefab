@@ -146,8 +146,8 @@ MonoBehaviour:
   powerDownSoundVolume: 1
   shieldBreakSound: {fileID: 8300000, guid: 0359b37a6aeb5a948b9cacf81fc9a5e8, type: 3}
   shieldBreakSoundVolume: 1
-  powerUpFirePeriod: 0.125
-  powerUpTime: 5
+  quickFireCount: 0
+  quickFireEffect: 0.125
   ShieldSprite: {fileID: 2615781685740668393}
 --- !u!60 &2284575130035180793
 PolygonCollider2D:

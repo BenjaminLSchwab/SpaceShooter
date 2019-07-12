@@ -377,6 +377,11 @@ PrefabInstance:
       propertyPath: maxTimeBetweenBlasts
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1344259787373063795, guid: 85e37cc9f59139946bbf8f2cd83bcbd0,
+        type: 3}
+      propertyPath: maxRocksPerBlast
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e37cc9f59139946bbf8f2cd83bcbd0, type: 3}
 --- !u!1001 &1313149004
@@ -1207,6 +1212,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1399114658019198, guid: 1dd3f256e13443844b9beae3757423a4,
         type: 3}
+    - target: {fileID: 7770797784054661288, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec,
+        type: 3}
+      propertyPath: quickFireEffect
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770797784054661288, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec,
+        type: 3}
+      propertyPath: quickFireCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cffcf3d4dbae7474eb7f27af4fd0d7ec, type: 3}
 --- !u!1001 &8521631461151251398

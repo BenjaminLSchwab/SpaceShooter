@@ -38,6 +38,7 @@ public class Player : MonoBehaviour {
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
     HealthDisplay HealthDisplay;
+    QuickFireDisplay QuickFireDisplay;
     DamageDealer DamageDealer;
 
     float xMin;
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour {
 	void Start () {
         SetUpMovementBoundaries();
         HealthDisplay = FindObjectOfType<HealthDisplay>();
+        QuickFireDisplay = FindObjectOfType<QuickFireDisplay>();
         DamageDealer = GetComponent<DamageDealer>();
 	}
 	
@@ -177,6 +179,7 @@ public class Player : MonoBehaviour {
     private void TakeDamage(DamageDealer damageDealer)
     {
         quickFireCount = 0;
+        QuickFireDisplay.ChangeDisplay();
         AudioSource.PlayClipAtPoint(damageSound, transform.position, damageSoundVolume);
         health -= damageDealer.GetDamage();
         HealthDisplay.ChangeHealth();
@@ -194,6 +197,11 @@ public class Player : MonoBehaviour {
     public int GetHealth()
     {
         return health;
+    }
+
+    public int GetQuickFireCount()
+    {
+        return quickFireCount;
     }
 
     IEnumerator IFrames(float seconds = 1.5f)
@@ -218,6 +226,8 @@ public class Player : MonoBehaviour {
     public void QuickFirePowerUp()
     {
         quickFireCount++;
+        QuickFireDisplay.ChangeDisplay();
+
     }
 
     public void ShieldPowerUp()

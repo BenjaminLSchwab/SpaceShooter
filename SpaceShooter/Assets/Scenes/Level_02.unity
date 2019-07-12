@@ -938,11 +938,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5942048273627706091, guid: 1cbe52802a62d2f4485e26b974698988,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Resume
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cbe52802a62d2f4485e26b974698988, type: 3}
 --- !u!1001 &6394439461021057304

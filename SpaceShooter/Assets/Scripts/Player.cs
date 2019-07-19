@@ -34,11 +34,14 @@ public class Player : MonoBehaviour {
     [SerializeField] int quickFireCount = 0;
     [SerializeField] float quickFireEffect = .125f;
     [SerializeField] SpriteRenderer ShieldSprite;
+    [SerializeField] int spreadShotCount = 0;
+    [SerializeField] float spreadShotCone = 120f;
 
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
     HealthDisplay HealthDisplay;
     QuickFireDisplay QuickFireDisplay;
+    SpreadShotDisplay SpreadShotDisplay;
     DamageDealer DamageDealer;
 
     float xMin;
@@ -56,6 +59,7 @@ public class Player : MonoBehaviour {
         SetUpMovementBoundaries();
         HealthDisplay = FindObjectOfType<HealthDisplay>();
         QuickFireDisplay = FindObjectOfType<QuickFireDisplay>();
+        SpreadShotDisplay = FindObjectOfType<SpreadShotDisplay>();
         DamageDealer = GetComponent<DamageDealer>();
 	}
 	
@@ -96,31 +100,80 @@ public class Player : MonoBehaviour {
 
     IEnumerator MakeLaser()
     {
-            if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
-            var laserSpawnPos = transform.position + (transform.up * laserSpawnDistance);
+        if (laserSound) AudioSource.PlayClipAtPoint(laserSound, transform.position, laserSoundVolume);
 
-            GameObject newLaser = FindFirstInactiveLaser(); //returns null if the pool has no lasers ready
+
+        int lasersThisShot = 1 + (spreadShotCount * 2);
+
+
+        if (lasersThisShot == 1)
+        {
+        SpawnSingleLaser();
+
+        }
+        else
+        {
+            SpawnMultiLasers(lasersThisShot);
+        }
+
+
+        readyToFire = false;
+        yield return new WaitForSeconds(laserSpawnPeriod - Mathf.Min(quickFireEffect * quickFireCount, laserSpawnPeriod * 0.99f));
+        readyToFire = true;
+    }
+
+    private void SpawnMultiLasers(int lasersThisShot)
+    {
+        float degreesBetweenShot = spreadShotCone / (lasersThisShot - 1);
+        for (int i = 0; i < lasersThisShot; i++)
+        {
+            GameObject newLaser = FindFirstInactiveLaser();
+            var laserSpawnPos = transform.position + (transform.up * laserSpawnDistance);
+            var desiredEuler = transform.rotation.eulerAngles;
+            desiredEuler.z += ((i * degreesBetweenShot) - (spreadShotCone * 0.5f));
+            Quaternion laserRotation = new Quaternion();
+            laserRotation.eulerAngles = desiredEuler;
+
+
+
+
             if (newLaser == null)
             {
-                newLaser = Instantiate(laser, laserSpawnPos, transform.rotation);
+                newLaser = Instantiate(laser, laserSpawnPos, laserRotation);
                 laserPool.Add(newLaser);
             }
             else
             {
                 newLaser.SetActive(true);
                 newLaser.transform.position = laserSpawnPos;
-                newLaser.transform.rotation = transform.rotation;
+                newLaser.transform.rotation = laserRotation;
             }
-
             var rb = newLaser.GetComponent<Rigidbody2D>();
-            var vel = transform.up * laserSpeed;
+            var vel = newLaser.transform.up * laserSpeed;
             rb.velocity = vel;
+        }
+    }
 
-            readyToFire = false;
+    private void SpawnSingleLaser()
+    {
+        GameObject newLaser = FindFirstInactiveLaser(); //returns null if the pool has no lasers ready
+        var laserSpawnPos = transform.position + (transform.up * laserSpawnDistance);
 
-            yield return new WaitForSeconds(laserSpawnPeriod - Mathf.Min(quickFireEffect * quickFireCount, laserSpawnPeriod * 0.99f));
+        if (newLaser == null)
+        {
+            newLaser = Instantiate(laser, laserSpawnPos, transform.rotation);
+            laserPool.Add(newLaser);
+        }
+        else
+        {
+            newLaser.SetActive(true);
+            newLaser.transform.position = laserSpawnPos;
+            newLaser.transform.rotation = transform.rotation;
+        }
 
-            readyToFire = true;
+        var rb = newLaser.GetComponent<Rigidbody2D>();
+        var vel = newLaser.transform.up * laserSpeed;
+        rb.velocity = vel;
     }
 
     GameObject FindFirstInactiveLaser()
@@ -204,6 +257,11 @@ public class Player : MonoBehaviour {
         return quickFireCount;
     }
 
+    public int GetSpreadShotCount()
+    {
+        return spreadShotCount;
+    }
+
     IEnumerator IFrames(float seconds = 1.5f)
     {
         invincible = true;
@@ -234,5 +292,12 @@ public class Player : MonoBehaviour {
     {
         shielded = true;
         ShieldSprite.gameObject.SetActive(true);
+    }
+
+    public void SpreadShotPowerUp()
+    {
+        spreadShotCount++;
+        SpreadShotDisplay.ChangeDisplay();
+
     }
 }

@@ -37,11 +37,16 @@ public class Player : MonoBehaviour {
     [SerializeField] int spreadShotCount = 0;
     [SerializeField] float spreadShotCone = 120f;
 
+    [Header("Gui Stat Displays")]
+    [SerializeField] PlayerStatDisplay healthDisplay;
+    [SerializeField] PlayerStatDisplay quickFireDisplay;
+    [SerializeField] PlayerStatDisplay spreadShotDisplay;
+
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
-    HealthDisplay HealthDisplay;
-    QuickFireDisplay QuickFireDisplay;
-    SpreadShotDisplay SpreadShotDisplay;
+    //HealthDisplay HealthDisplay;
+    //QuickFireDisplay QuickFireDisplay;
+    //SpreadShotDisplay SpreadShotDisplay;
     DamageDealer DamageDealer;
 
     float xMin;
@@ -51,16 +56,13 @@ public class Player : MonoBehaviour {
 
     bool invincible = false;
     bool readyToFire = true;
-    bool quickFire = false;
     bool shielded = false;
 
 	// Use this for initialization
 	void Start () {
         SetUpMovementBoundaries();
-        HealthDisplay = FindObjectOfType<HealthDisplay>();
-        QuickFireDisplay = FindObjectOfType<QuickFireDisplay>();
-        SpreadShotDisplay = FindObjectOfType<SpreadShotDisplay>();
         DamageDealer = GetComponent<DamageDealer>();
+        healthDisplay.ChangeDisplay(health);
 	}
 	
 	// Update is called once per frame
@@ -232,10 +234,10 @@ public class Player : MonoBehaviour {
     private void TakeDamage(DamageDealer damageDealer)
     {
         quickFireCount = 0;
-        QuickFireDisplay.ChangeDisplay();
+        quickFireDisplay.ChangeDisplay(0);
         AudioSource.PlayClipAtPoint(damageSound, transform.position, damageSoundVolume);
         health -= damageDealer.GetDamage();
-        HealthDisplay.ChangeHealth();
+        healthDisplay.ChangeDisplay(health);
         StartCoroutine(IFrames(iFrameTime));
     }
 
@@ -281,23 +283,24 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void QuickFirePowerUp()
+    public void AddPowerUp(PowerUp.PowerUpType type)
     {
-        quickFireCount++;
-        QuickFireDisplay.ChangeDisplay();
-
-    }
-
-    public void ShieldPowerUp()
-    {
-        shielded = true;
-        ShieldSprite.gameObject.SetActive(true);
-    }
-
-    public void SpreadShotPowerUp()
-    {
-        spreadShotCount++;
-        SpreadShotDisplay.ChangeDisplay();
-
+        switch (type)
+        {
+            case PowerUp.PowerUpType.Shield:
+                shielded = true;
+                ShieldSprite.gameObject.SetActive(true);
+                break;
+            case PowerUp.PowerUpType.QuickFire:
+                quickFireCount++;
+                quickFireDisplay.ChangeDisplay(quickFireCount);
+                break;
+            case PowerUp.PowerUpType.SpreadShot:
+                spreadShotCount++;
+                spreadShotDisplay.ChangeDisplay(spreadShotCount);
+                break;
+            default:
+                break;
+        }
     }
 }

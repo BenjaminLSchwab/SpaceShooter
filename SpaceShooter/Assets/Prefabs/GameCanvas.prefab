@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 922527972}
-  - component: {fileID: 922527973}
+  - component: {fileID: 4529496210024503781}
   m_Layer: 5
   m_Name: QuickFireDisplay
   m_TagString: Untagged
@@ -36,7 +36,7 @@ RectTransform:
   m_AnchoredPosition: {x: -752, y: 314.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &922527973
+--- !u!114 &4529496210024503781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 922527971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff558f5cfe4f7b4b9f1b779c614c11c, type: 3}
+  m_Script: {fileID: 11500000, guid: e6bcc5b71368656438dc9455d683b7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Sprite: {fileID: 3513010525666103290, guid: 447c5260a75e00b44b5c6ed982ff56f6, type: 3}
@@ -606,7 +606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7893485452311309272}
-  - component: {fileID: 2757018992675362222}
+  - component: {fileID: 8537609489591290305}
   m_Layer: 0
   m_Name: HealthDisplay
   m_TagString: Untagged
@@ -628,7 +628,7 @@ Transform:
   m_Father: {fileID: 3715072077201348511}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2757018992675362222
+--- !u!114 &8537609489591290305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -637,11 +637,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7030458916166923850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58714db10af33844a030a56c5c47267, type: 3}
+  m_Script: {fileID: 11500000, guid: e6bcc5b71368656438dc9455d683b7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSprite: {fileID: 3513010525666103290, guid: ab9ff805a0e198f49b54b8e1a777a413,
-    type: 3}
+  Sprite: {fileID: 3513010525666103290, guid: ab9ff805a0e198f49b54b8e1a777a413, type: 3}
   SpriteSpacing: {x: 80, y: 0, z: 0}
 --- !u!1 &7102713249009031107
 GameObject:
@@ -684,7 +683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 818996374170849949}
-  - component: {fileID: 4295924095019494098}
+  - component: {fileID: 8001663292267713050}
   m_Layer: 5
   m_Name: SpreadShotDisplay
   m_TagString: Untagged
@@ -711,7 +710,7 @@ RectTransform:
   m_AnchoredPosition: {x: -752, y: 236}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4295924095019494098
+--- !u!114 &8001663292267713050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -720,7 +719,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8128116581530421844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1d63cb40c33a3488df6c042a7561a4, type: 3}
+  m_Script: {fileID: 11500000, guid: e6bcc5b71368656438dc9455d683b7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Sprite: {fileID: 3513010525666103290, guid: fdff7f6b9445bde46b557ec99ea30b93, type: 3}

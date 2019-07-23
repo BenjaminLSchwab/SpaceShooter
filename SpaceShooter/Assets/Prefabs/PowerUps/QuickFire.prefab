@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8451245970884262078}
   - component: {fileID: 8451245970884262079}
   - component: {fileID: 8451245970884262076}
-  - component: {fileID: 8451245970884262077}
   - component: {fileID: 8451245970884262073}
+  - component: {fileID: 7226976944247340279}
   m_Layer: 12
   m_Name: QuickFire
   m_TagString: Untagged
@@ -98,20 +98,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15999998
---- !u!114 &8451245970884262077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8451245970884262066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b7f3b30b34bdf41b7ce9258de32070, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickupSound: {fileID: 8300000, guid: ec5895e8203cd4e45b384024087ab9d9, type: 3}
-  pickupSoundVolume: 1
 --- !u!50 &8451245970884262073
 Rigidbody2D:
   serializedVersion: 4
@@ -133,3 +119,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7226976944247340279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451245970884262066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5371be31f401c4ca51b36fe93352cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  pickupSound: {fileID: 8300000, guid: ec5895e8203cd4e45b384024087ab9d9, type: 3}
+  pickupSoundVolume: 1

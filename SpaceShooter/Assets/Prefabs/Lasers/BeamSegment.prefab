@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4592909480883189427}
   - component: {fileID: 8382102568392883118}
   m_Layer: 11
-  m_Name: EnemyLaser
+  m_Name: BeamSegment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1703989139251503683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0663149, y: -0.26041907, z: -0.10575481}
-  m_LocalScale: {x: 1.7576249, y: 1.29, z: 1.29}
+  m_LocalScale: {x: 1.7576249, y: 1.5873047, z: 1.29}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

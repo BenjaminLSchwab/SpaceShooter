@@ -7,6 +7,12 @@ public class Beam : MonoBehaviour
 {
     [SerializeField] GameObject beamSegment;
     [SerializeField] GameObject beamEndSprite;
+    [SerializeField] GameObject muzzleFlash;
+    [SerializeField] AudioClip beamAttack;
+    [SerializeField] [Range(0, 1)] float beamAttackVolume = 1f;
+    [SerializeField] AudioClip beamWarm;
+    [SerializeField] [Range(0, 1)] float beamWarmVolume = 1f;
+    [SerializeField] GameObject beamSustain;
     [SerializeField] float offSet = 0.3f;
     [SerializeField] float spaceBetweenSegments = 0.5f;
     [SerializeField] float maxRange = 40f;
@@ -14,12 +20,14 @@ public class Beam : MonoBehaviour
     [SerializeField] float beamSpeed = 30f;
     [SerializeField] float beamToggleTime = 0.5f;
     [SerializeField][Range(0,1)] float beamOnRate = 0.5f;
+    [SerializeField] float beamWarmTime = 0.5f;
 
 
 
     List<GameObject> beamSegments = new List<GameObject>();
     GameObject beamEndPiece;
-    bool clearedSegments = false;
+    bool beamAttackSoundPlayed = false;
+    bool beamWarmSoundPlayed = false;
     float maxBeamLength = 0f;
     float beamTimer = 0;
 
@@ -49,14 +57,35 @@ public class Beam : MonoBehaviour
         {
             beamTimer = 0;
             beamOn = false;
+            beamAttackSoundPlayed = false;
+            beamWarmSoundPlayed = false;
             maxBeamLength = 0;
+            muzzleFlash.SetActive(false);
+            beamSustain.SetActive(false);
         }
-        if (beamTimer > Mathf.Lerp(0, beamToggleTime, 1f - beamOnRate))
+        var beamStartTime = Mathf.Lerp(0, beamToggleTime, 1f - beamOnRate);
+        if (beamTimer > beamStartTime)
         {
             beamOn = true;
+            beamSustain.SetActive(true);
+            
             if (maxBeamLength < maxRange)
             {
                 maxBeamLength += Time.deltaTime * beamSpeed;
+            }
+            if (!beamAttackSoundPlayed)
+            {
+                beamAttackSoundPlayed = true;
+                AudioSource.PlayClipAtPoint(beamAttack, transform.position, beamAttackVolume);
+            }
+        }
+        else if (beamTimer > (beamStartTime - beamWarmTime))
+        {
+            muzzleFlash.SetActive(true);
+            if (!beamWarmSoundPlayed)
+            {
+                beamWarmSoundPlayed = true;
+                AudioSource.PlayClipAtPoint(beamWarm, transform.position, beamWarmVolume);
             }
         }
         UpdateBeam();

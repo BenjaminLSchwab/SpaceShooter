@@ -12,9 +12,12 @@ public class MultiLaser : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        foreach (var childLaser in ChildLasers)
+        {
+            childLaser.SetActive(true);
+        }
     }
 
     public void CheckForLaserReset()//makes sure the parent laser object gets set to unactive for item pooling reasons

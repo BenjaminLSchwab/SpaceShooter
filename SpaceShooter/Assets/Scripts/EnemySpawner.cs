@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int startingWave = 0;
     [SerializeField] EnemySpawner NextSpawner;
     [SerializeField] float DelayNextSpawner = 0f;
+    [SerializeField] float TimeBetweenWaves = 1f;
 
 
 
@@ -30,7 +31,8 @@ public class EnemySpawner : MonoBehaviour
 
         for (int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++ )
         {
-            yield return SpawnAllEnemiesInWave(waveConfigs[waveIndex]);
+            StartCoroutine( SpawnAllEnemiesInWave(waveConfigs[waveIndex]));
+            yield return new WaitForSeconds(TimeBetweenWaves);
         }
     
 

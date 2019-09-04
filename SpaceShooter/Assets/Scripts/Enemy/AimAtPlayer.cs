@@ -9,9 +9,11 @@ public class AimAtPlayer : MonoBehaviour
     protected GameObject player;
     float timer = 0;
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         player = FindObjectOfType<Player>().gameObject;
+        Quaternion facingPlayer = Quaternion.LookRotation(Vector3.forward, (transform.position - player.transform.position).normalized);
+        transform.rotation = Quaternion.Lerp(transform.rotation, facingPlayer, Time.deltaTime * aimSpeed);
     }
 
     // Update is called once per frame

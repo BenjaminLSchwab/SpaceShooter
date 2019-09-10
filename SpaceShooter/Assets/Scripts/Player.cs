@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     [SerializeField] float iFrameTime = 1.5f;
     [SerializeField] float iFrameFlashRate = 0.25f;
     [SerializeField] SpriteRenderer MainSprite;
+    [SerializeField] GameObject OutlineSprite;
 
     [Header("Projectile")]
     [SerializeField] float laserSpeed = 10f;
@@ -29,11 +30,22 @@ public class Player : MonoBehaviour {
     [SerializeField] [Range(0, 1)] float damageSoundVolume = 1f;
     [SerializeField] AudioClip shieldBreakSound;
     [SerializeField] [Range(0, 1)] float shieldBreakSoundVolume = 1f;
+    [SerializeField] AudioClip enterWarpSound;
+    [SerializeField] [Range(0, 1)] float enterWarpSoundVolume = 1f;
+    [SerializeField] AudioClip exitWarpSound;
+    [SerializeField] [Range(0, 1)] float exitWarpSoundVolume = 1f;
+    [SerializeField] float exitWarpSoundOffset = 0.15f;
 
     [Header("PowerUp")]
+    [SerializeField] bool CanWarp = true;
+    [SerializeField] SpriteRenderer ShieldSprite;
+
+    [SerializeField] float WarpITime = 0.3f;
+    [SerializeField] float WarpCooldownTime = 1f;
+    [SerializeField] float WarpOutlinePeriod = 0.1f;
+    
     [SerializeField] int quickFireCount = 0;
     [SerializeField] float quickFireEffect = .125f;
-    [SerializeField] SpriteRenderer ShieldSprite;
     [SerializeField] int spreadShotCount = 0;
     [SerializeField] float spreadShotCone = 120f;
 
@@ -44,6 +56,7 @@ public class Player : MonoBehaviour {
 
     Coroutine FiringLaser;
     List<GameObject> laserPool = new List<GameObject>();
+    List<GameObject> OutlinePool = new List<GameObject>();
     //HealthDisplay HealthDisplay;
     //QuickFireDisplay QuickFireDisplay;
     //SpreadShotDisplay SpreadShotDisplay;
@@ -53,13 +66,19 @@ public class Player : MonoBehaviour {
     float xMax;
     float yMin;
     float yMax;
+    float warpITimer = 0f;
+    float warpCoolDownTimer = 0f;
+    float warpOutlineTimer = 0f;
 
     bool invincible = false;
     bool readyToFire = true;
     bool shielded = false;
+    private bool warpReady;
+    bool warping = false;
+    private bool warpExitHasPlayed;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         SetUpMovementBoundaries();
         DamageDealer = GetComponent<DamageDealer>();
         healthDisplay.ChangeDisplay(health);
@@ -71,6 +90,7 @@ public class Player : MonoBehaviour {
         Move();
         Rotate();
         Fire();
+        Warp();
 	}
 
     private void Rotate()
@@ -231,6 +251,76 @@ public class Player : MonoBehaviour {
 
     }
 
+    private void Warp()
+    {
+        if (warpCoolDownTimer > 0)
+        {
+            warpCoolDownTimer -= Time.deltaTime;
+            
+        }
+        if (warpITimer > 0)
+        {
+            
+            warpITimer -= Time.deltaTime;
+            warpOutlineTimer -= Time.deltaTime;
+            if (warpOutlineTimer < 0)
+            {
+                warpOutlineTimer = WarpOutlinePeriod;
+                GameObject newSprite = Utilities.PullFromPool(OutlinePool);
+                if (newSprite == null)
+                {
+                    newSprite = Instantiate(OutlineSprite, transform.position, transform.rotation);
+                    OutlinePool.Add(newSprite);
+                }
+                else
+                {
+                    newSprite.transform.position = transform.position;
+                    newSprite.transform.rotation = transform.rotation;
+                    newSprite.gameObject.SetActive(true);
+                }
+            }
+            if(warpITimer <= 0)
+            {
+                invincible = false;
+                MainSprite.gameObject.SetActive(true);
+                DamageDealer.SetDamage(1);
+
+            }
+            if (warpITimer - exitWarpSoundOffset <= 0 && !warpExitHasPlayed)
+            {
+                AudioSource.PlayClipAtPoint(exitWarpSound, transform.position, exitWarpSoundVolume);
+                warpExitHasPlayed = true;
+            }
+        }
+        
+        else if (Input.GetMouseButtonDown(1) && (Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"))) > 0f)
+        {
+            if (!CanWarp) return;
+            if(warpCoolDownTimer <= 0)
+            {
+                warpExitHasPlayed = false;
+                invincible = true;
+                warpCoolDownTimer = WarpCooldownTime;
+                warpITimer = WarpITime;
+                DamageDealer.SetDamage(0);
+                MainSprite.gameObject.SetActive(false);
+                AudioSource.PlayClipAtPoint(enterWarpSound, transform.position, enterWarpSoundVolume);
+                //StartCoroutine(MakeWarpOutlines());
+            }
+
+        }
+        else
+        {
+
+        }
+    }
+
+    //IEnumerator MakeWarpOutlines()
+    //{
+    //    Instantiate(OutlineSprite, transform.position , transform.rotation);
+    //    yield return new WaitForSeconds(WarpOutlinePeriod);
+    //}
+
     private void TakeDamage(DamageDealer damageDealer)
     {
         quickFireCount = 0;
@@ -266,12 +356,14 @@ public class Player : MonoBehaviour {
 
     IEnumerator IFrames(float seconds = 1.5f)
     {
+        CanWarp = false;
         invincible = true;
         DamageDealer.SetDamage(0);
         StartCoroutine(FlashSprite());
         yield return new WaitForSeconds(seconds);
         invincible = false;
         DamageDealer.SetDamage(1);
+        CanWarp = true;
     }
 
     IEnumerator FlashSprite()

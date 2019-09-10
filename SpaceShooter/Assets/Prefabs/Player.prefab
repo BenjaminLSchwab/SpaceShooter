@@ -132,6 +132,8 @@ MonoBehaviour:
   iFrameTime: 2
   iFrameFlashRate: 0.2
   MainSprite: {fileID: 7770797784715659840}
+  OutlineSprite: {fileID: 4351967873588743444, guid: 4c0923510d3afed4085fbdeb1d6f9725,
+    type: 3}
   laserSpeed: 25
   laserSpawnDistance: 0.1
   laserSpawnPeriod: 0.5
@@ -144,9 +146,18 @@ MonoBehaviour:
   damageSoundVolume: 1
   shieldBreakSound: {fileID: 8300000, guid: 0359b37a6aeb5a948b9cacf81fc9a5e8, type: 3}
   shieldBreakSoundVolume: 1
+  enterWarpSound: {fileID: 8300000, guid: f60f87d92a474464bac4ae055468377e, type: 3}
+  enterWarpSoundVolume: 0.42
+  exitWarpSound: {fileID: 8300000, guid: 5e295adcb39848644b347322586ca776, type: 3}
+  exitWarpSoundVolume: 1
+  exitWarpSoundOffset: 0.15
+  CanWarp: 1
+  ShieldSprite: {fileID: 2615781685740668393}
+  WarpITime: 0.45
+  WarpCooldownTime: 1.15
+  WarpOutlinePeriod: 0.02
   quickFireCount: 0
   quickFireEffect: 0.125
-  ShieldSprite: {fileID: 2615781685740668393}
   spreadShotCount: 0
   spreadShotCone: 100
   healthDisplay: {fileID: 0}

@@ -687,6 +687,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 2262835618400400955, guid: 107af77522d579d428a7d1a090717aca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5194957572566902547, guid: 107af77522d579d428a7d1a090717aca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1039,6 +1044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: DelayNextSpawner
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394439461369011834, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
+        type: 3}
+      propertyPath: TimeBetweenWaves
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6394439461369011835, guid: abe0ae49d30d2f44e8e2a1f3409cd8c6,
         type: 3}

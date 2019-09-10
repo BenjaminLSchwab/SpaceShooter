@@ -108,11 +108,10 @@ MonoBehaviour:
   beamAttack: {fileID: 8300000, guid: 405d2741e4317c94ea7f508a32ca70fe, type: 3}
   beamAttackVolume: 0.709
   beamWarm: {fileID: 8300000, guid: b71b93a19be86814fa6e431fc15fc427, type: 3}
-  beamWarmVolume: 1
+  beamWarmVolume: 0.87
   beamSustain: {fileID: 7117601225275493992}
   offSet: 0.3
-  spaceBetweenSegments: 0.5
-  maxRange: 20
+  maxRange: 50
   beamOn: 0
   beamSpeed: 15
   beamToggleTime: 8
@@ -258,7 +257,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6759c7fa28c90314da04c05a18992a7f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.222
+  m_Volume: 0.083
   m_Pitch: 2.11
   Loop: 1
   Mute: 0
@@ -603,7 +602,7 @@ Transform:
   m_GameObject: {fileID: 7117601226766191994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.56114, y: 0.56114, z: 0.56114}
   m_Children: []
   m_Father: {fileID: 7117601225199575959}
   m_RootOrder: 1

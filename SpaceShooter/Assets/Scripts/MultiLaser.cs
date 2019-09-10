@@ -8,12 +8,13 @@ public class MultiLaser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChildLasers = new List<GameObject>();
+        
     }
 
     // Update is called once per frame
     private void OnEnable()
     {
+        ChildLasers = new List<GameObject>();
         foreach (var childLaser in ChildLasers)
         {
             childLaser.SetActive(true);

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe856359915523246aa375ba026aacd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spinSpeed: 0
 --- !u!58 &6869346941915588183
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -77,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6947f3c38810143ac185b7d935353d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  m_damage: 1
 --- !u!50 &6955547152616999427
 Rigidbody2D:
   serializedVersion: 4
@@ -116,6 +117,7 @@ MonoBehaviour:
     type: 3}
   score: 212
   damageColor: {r: 1, g: 0, b: 0, a: 1}
+  DamageFlashPeriod: 0.05
   deathSound: {fileID: 8300000, guid: 579dfac2df7b91d409d2e9c0e1fba94f, type: 3}
   deathSoundVolume: 1
   damageSound: {fileID: 8300000, guid: 3c9b39fe8f1d1384fb5aa2ab078267dd, type: 3}
@@ -139,7 +141,7 @@ MonoBehaviour:
   laserSpawnDistance: 1
   laserSpeed: 5
   laserSound: {fileID: 8300000, guid: b78d790f1c349024a85926c1c4f68e6a, type: 3}
-  laserSoundVolume: 0.5
+  laserSoundVolume: 0.589
 --- !u!1 &6048086869287573467
 GameObject:
   m_ObjectHideFlags: 0

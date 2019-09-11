@@ -139,15 +139,15 @@ MonoBehaviour:
   laserSpawnPeriod: 0.5
   laser: {fileID: 678956732741992864, guid: 8de7bb2908688134c822814e8a795031, type: 3}
   laserSound: {fileID: 8300000, guid: 1b80c7ba139e75f4f874f889609d752f, type: 3}
-  laserSoundVolume: 0.519
+  laserSoundVolume: 0.621
   deathSound: {fileID: 8300000, guid: 2d7e1b0e07c8a364bbf43a32b4587008, type: 3}
-  deathSoundVolume: 1.5
+  deathSoundVolume: 1
   damageSound: {fileID: 8300000, guid: d702ccc26776fce4c9dc2001612fb19b, type: 3}
   damageSoundVolume: 1
   shieldBreakSound: {fileID: 8300000, guid: 0359b37a6aeb5a948b9cacf81fc9a5e8, type: 3}
   shieldBreakSoundVolume: 1
   enterWarpSound: {fileID: 8300000, guid: f60f87d92a474464bac4ae055468377e, type: 3}
-  enterWarpSoundVolume: 0.42
+  enterWarpSoundVolume: 0.477
   exitWarpSound: {fileID: 8300000, guid: 5e295adcb39848644b347322586ca776, type: 3}
   exitWarpSoundVolume: 1
   exitWarpSoundOffset: 0.15

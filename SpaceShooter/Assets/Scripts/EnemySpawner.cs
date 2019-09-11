@@ -39,12 +39,7 @@ public class EnemySpawner : MonoBehaviour
         if (NextSpawner)
         {
             yield return new WaitForSeconds(DelayNextSpawner);
-            NextSpawner.gameObject.SetActive(true);
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(false);
+            NextSpawner.gameObject.SetActive(true);            
         }
     }
 

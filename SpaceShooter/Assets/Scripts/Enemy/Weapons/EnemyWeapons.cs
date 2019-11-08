@@ -28,7 +28,7 @@ public class EnemyWeapons : MonoBehaviour
     {
         CountDownAndShoot();
     }
-    protected void CountDownAndShoot()
+    protected virtual void CountDownAndShoot()
     {
         shotCounter -= Time.deltaTime;
         if (shotCounter < 0)

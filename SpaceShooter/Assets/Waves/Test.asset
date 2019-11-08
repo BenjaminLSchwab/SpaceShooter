@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610f9596d20f55244b067dd27070a8d2, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7117601225199575954, guid: 590a6bcb3fad2dc428a5b308ab447c7f,
+  enemyPrefab: {fileID: 5692907365860094182, guid: b9ddea53f8eb59b4e84b4a0af736b0da,
     type: 3}
   pathPrefab: {fileID: 2696262684433381945, guid: a0be03bb4584eda4f906162b1599b2ce,
     type: 3}

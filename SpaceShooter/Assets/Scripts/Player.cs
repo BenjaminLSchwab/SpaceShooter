@@ -73,6 +73,7 @@ public class Player : MonoBehaviour {
     bool invincible = false;
     bool readyToFire = true;
     bool shielded = false;
+    bool controller = false;
     private bool warpReady;
     bool warping = false;
     private bool warpExitHasPlayed;
@@ -96,9 +97,34 @@ public class Player : MonoBehaviour {
     private void Rotate()
     {
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Mathf.Abs(Input.GetAxisRaw("FacingX")) + Mathf.Abs(Input.GetAxisRaw("FacingY")) > 0)
+        {
+            controller = true;
+            Cursor.visible = false;
+        }
+        if(Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        {
+            controller = false;
+            Cursor.visible = true;
+        }
+
+        if (!controller)
+        {
+            Quaternion facingMouse = Quaternion.LookRotation(Vector3.forward, (mousePos - transform.position).normalized);
+            transform.rotation = facingMouse;
+        }
+        else
+        {
+            Vector3 controllerDirection = new Vector3(Input.GetAxis("FacingX"), Input.GetAxis("FacingY"));
+            if (controllerDirection.magnitude != 0)
+            {
+                Quaternion facingJoystick = Quaternion.LookRotation(Vector3.forward, controllerDirection.normalized);
+                transform.rotation = facingJoystick;
+            }
+            
+        }
+
         
-        Quaternion facingMouse = Quaternion.LookRotation(Vector3.forward,(mousePos - transform.position).normalized);
-        transform.rotation = facingMouse;
     }
 
     void Move()
@@ -293,7 +319,7 @@ public class Player : MonoBehaviour {
             }
         }
         
-        else if (Input.GetMouseButtonDown(1) && (Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"))) > 0f)
+        else if (Input.GetButton("Fire2") && (Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"))) > 0f)
         {
             if (!CanWarp) return;
             if(warpCoolDownTimer <= 0)
@@ -333,6 +359,7 @@ public class Player : MonoBehaviour {
 
     private void Die()
     {
+        Cursor.visible = true;
         if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, deathSoundVolume);
         gameObject.SetActive(false);
         FindObjectOfType<Level>().LoadGameOver();

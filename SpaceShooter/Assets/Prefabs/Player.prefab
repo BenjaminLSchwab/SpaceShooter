@@ -134,7 +134,7 @@ MonoBehaviour:
   MainSprite: {fileID: 7770797784715659840}
   OutlineSprite: {fileID: 4351967873588743444, guid: 4c0923510d3afed4085fbdeb1d6f9725,
     type: 3}
-  laserSpeed: 25
+  laserSpeed: 45
   laserSpawnDistance: 0.1
   laserSpawnPeriod: 0.5
   laser: {fileID: 678956732741992864, guid: 8de7bb2908688134c822814e8a795031, type: 3}
